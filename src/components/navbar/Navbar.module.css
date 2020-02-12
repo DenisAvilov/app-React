@@ -1,0 +1,27 @@
+.nav{
+    grid-area: nav;
+    background: linear-gradient(145deg, #007495, #008ab2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    }
+    .nav a{
+      font-size: 1.2em;
+      font-weight: 700;
+      line-height: 1.2;
+      padding: 10px 0;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid #A65400;
+      margin-bottom: 5px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #A65400;
+    }
+    .nav a:hover{
+      color: #BF7830;
+      border-bottom: 1px solid #BF7830;
+      transition: border-bottom 0.4s ease, color 0.4s ease, ;
+    }

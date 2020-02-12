@@ -1,0 +1,32 @@
+.app-wrapper{  
+  display: grid;
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  grid-template-rows: auto 1fr 50px;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 10px ;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: #fff;
+  font-size: 100%;
+  overflow: hidden;
+  /* background-color: rgb(15, 166, 207); */
+  grid-template-areas: 
+  "h h"
+  "nav content"
+  "f f";
+}
+ 
+h2{
+  font-size: 1.5em;
+  margin-bottom: 10px;
+ 
+} 
+ 
+ 
+  @media only screen and (max-width: 480px){
+    .app-wrapper{
+      max-width: 500px;
+      
+    }
+  }
