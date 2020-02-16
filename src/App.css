@@ -16,6 +16,16 @@
   "nav content"
   "f f";
 }
+.profile{
+  grid-area: content;
+  background: linear-gradient(145deg, #56a7be, #66c6e2);
+
+  }
+  .profile > img{
+    object-fit: fill;
+    height: 200px;
+    width: 100%;
+  }
  
 h2{
   font-size: 1.5em;

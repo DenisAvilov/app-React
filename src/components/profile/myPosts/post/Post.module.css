@@ -1,1 +1,15 @@
 
+.item{
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    width: 250px;
+    background-color: #cecece;
+    color: #777
+}
+.item .like{
+    display: block;
+    padding-top: 20px;
+    
+}

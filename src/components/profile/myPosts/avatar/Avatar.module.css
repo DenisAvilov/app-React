@@ -1,0 +1,39 @@
+
+.avatar{
+    display: flex;
+    justify-content: start;
+    }
+     .avatar img {
+    object-fit: fill;
+    width: 95px;
+    height: 100px;
+    }  
+     .avatar{
+    padding: 10px;
+    }
+
+    .avatar .user{
+    margin-left: 40px;           
+    }
+     .avatar .user h2{
+      margin-bottom: 0;
+    }
+    .avatar .user  ul li a{
+      text-decoration: none;
+      padding: 10px 0;      
+      color: #A65400; 
+      font-size: 1.2em;      
+    }
+     .avatar .user  ul li a:hover{
+      color: #BF7830;     
+      transition:  color 0.4s ease;
+    }
+
+    .avatar .user span{
+      display: inline-block;
+      width: 150px;
+      font-weight: 600;
+      font-size: 1.2em; 
+    }
+
+    

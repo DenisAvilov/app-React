@@ -20,6 +20,9 @@
       text-decoration: none;
       color: #A65400;
     }
+    .nav a.active{
+      color:  #BF7830;
+    }
     .nav a:hover{
       color: #BF7830;
       border-bottom: 1px solid #BF7830;

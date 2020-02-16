@@ -1,49 +1,5 @@
-.profile{
-    grid-area: content;
-    background: linear-gradient(145deg, #56a7be, #66c6e2);
-  
-    }
-    .profile > img{
-      object-fit: fill;
-      height: 200px;
-      width: 100%;
-    }
+
     
-.profile .avatar{
-    display: flex;
-    justify-content: start;
-    }
-    .profile .avatar img {
-    object-fit: fill;
-    width: 95px;
-    height: 100px;
-    }  
-    .profile .avatar{
-    padding: 10px;
-    }
 
-    .profile .avatar .user{
-    margin-left: 40px;           
-    }
-    .profile .avatar .user h2{
-      margin-bottom: 0;
-    }
-    .profile .avatar .user  ul li a{
-      text-decoration: none;
-      padding: 10px 0;      
-      color: #A65400; 
-      font-size: 1.2em;      
-    }
-    .profile .avatar .user  ul li a:hover{
-      color: #BF7830;     
-      transition:  color 0.4s ease;
-    }
-
-    .profile .avatar .user span{
-      display: inline-block;
-      width: 150px;
-      font-weight: 600;
-      font-size: 1.2em; 
-    }
 
     
