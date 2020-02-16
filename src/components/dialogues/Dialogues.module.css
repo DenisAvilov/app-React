@@ -1,3 +1,32 @@
 .dialogs{
-    /* background-color: tomato; */
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    font-size: 1.2em;
+}
+.dialogsi_items{
+    padding: 10px;
+    display: block;
+}
+.dialog a{
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    min-width: 40px;
+    letter-spacing: 1px;
+    font-weight: 900;
+    color: white;
+}
+.dialog a:hover{
+    color:  #BF7830;
+    transition: color 0.4s ease;
+}
+.dialog a.active{
+    color:  #BF7830;
+}
+.messages{
+    padding: 10px;
+   
+}
+.message{
+    padding: 10px;
 }
