@@ -13,10 +13,7 @@ const Profile = ()=>{
              <img src="https://cdn.pixabay.com/photo/2016/11/21/15/38/beach-1846009_960_720.jpg"></img> 
         </div>
         <Avatar />        
-        <Posts/>  
-       
-       
-       
+        <Posts/>       
       </content>
     )
 }
