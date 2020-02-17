@@ -3,10 +3,16 @@ import React from 'react';
 import d from './Posts.module.css';
 import Post from './post/Post.jsx'
 const Posts = ()=>{
+
     const massedgeData = [
-        {id: 0, massedge: 'Денис привет это первое сообщение', age:'35', like:'21'},
-        {id: 1, massedge: 'Julia привет это первое сообщение', age:'35', like:'22'}
+        {id: 0, massedge: 'Денис привет это первое сообщение',  like:'21', img:"https://www.w3schools.com/howto/img_avatar.png", alt:"user name" },
+        {id: 1, massedge: 'Julia привет это первое сообщение',  like:'22', img:"https://static.knigavuhe.org/poster.jpg",  alt:"user name"},
+        {id: 3, massedge: 'Привет',  like:'32', img:"https://img.7dach.ru/image/600/03/69/46/2018/05/15/d5a8ac-nomark.jpg", alt:"user name" },
+       
     ];
+
+    const massedgerItem = massedgeData.map( content =>( <Post id={content.id} massedge={content.massedge} like={content.like} img={content.img}/>) );
+   
     return(
      
         <div className={d.posts}>
@@ -15,13 +21,10 @@ const Posts = ()=>{
             <input type="textarea"/>
             <button>Отправить</button>
             <button>Удалить</button>
-            </div>            
-            <Post id={massedgeData[0].id} massedge={massedgeData[0].massedge}  age={massedgeData[0].age} like={massedgeData[0].like}/>
-            <Post id={massedgeData[1].id} massedge={massedgeData[1].massedge}  age={massedgeData[1].age} like={massedgeData[1].like}/>
-           
-            {/* <Post massedge="Илья привет это первое сообщение" age="1.6" like="24"/>
-            <Post massedge="Илья  сообщение" age="1.6" like="24"/>
-            <Post massedge="Илья привет это первое сообщение" age="1.6" like="24"/>  */}
+            </div>  
+
+            {massedgerItem}         
+
         </div> 
     )      
   
