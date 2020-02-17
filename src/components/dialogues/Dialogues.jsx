@@ -13,18 +13,28 @@ const Dialog = (props) =>{
     )
 }
 
-const Dialogs = (props) =>{    
+const Dialogs = (props) =>{  
+
+    const usersIdData = [
+        { id: 0, name: 'Denis'},
+        { id: 1, name: 'Julia'},
+        { id: 2, name: 'Ilya'}
+    ]
+    const usersMessageData = [
+        {id: 0, message:'Привет я твой новый взгляд на обычные вещи'},
+        {id: 1, message:'Ты слышал обо мне но не доверял себе и всемремя сопратевлялся и не принмал меня во внмание'}
+    ]
     return(
     <div className={d.dialogs}>
                 <div className={d.dialogsi_items}> 
-                    <Dialog name="Denis" id="1"/>
-                    <Dialog name="Julia" id="2"/>
-                    <Dialog name="Ilya"  id="3"/>
+                    <Dialog name={usersIdData[0].name} id={usersIdData[0].id}/>
+                    <Dialog name={usersIdData[1].name} id={usersIdData[1].id}/>
+                    <Dialog name={usersIdData[2].name} id={usersIdData[2].id}/>
                </div>
                  
                 <div className={d.messages}>
-                         <Message message="Привет я твой новый взгляд на обычные вещи"/>
-                         <Message message="Ты слышал обо мне но не доверял себе и всемремя сопратевлялся и не принмал меня во внмание"/>       
+                         <Message id={usersMessageData[0].id} message={usersMessageData[0].message}/>
+                         <Message id={usersMessageData[1].id} message={usersMessageData[1].message}/> 
                 </div>
            </div>
          
