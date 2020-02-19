@@ -10,11 +10,9 @@ const Posts = ()=>{
         {id: 3, massedge: 'Привет',  like:'32', img:"https://img.7dach.ru/image/600/03/69/46/2018/05/15/d5a8ac-nomark.jpg", alt:"user name" },
        
     ];
-
     const massedgerItem = massedgeData.map( content =>( <Post id={content.id} massedge={content.massedge} like={content.like} img={content.img}/>) );
    
-    return(
-     
+    return(     
         <div className={d.posts}>
          <h2>Ваши посты</h2>
             <div>
@@ -22,9 +20,7 @@ const Posts = ()=>{
             <button>Отправить</button>
             <button>Удалить</button>
             </div>  
-
             {massedgerItem}         
-
         </div> 
     )      
   

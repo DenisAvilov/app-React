@@ -3,10 +3,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Это практическая работа по созданию соцеальной сети на React 
 
+### What i use 
+
+Навигация react-router-dom 
+Иконки @fortawesome/react-fontawesome , @fortawesome/free-solid-svg-icons , @fortawesome/fontawesome-svg-core
 
 ## Available Scripts
 
 In the project directory, you can run:
+
 
 ### `yarn start`
 

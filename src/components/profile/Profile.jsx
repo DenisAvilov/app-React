@@ -12,7 +12,8 @@ const Profile = ()=>{
         <div className={d.profileBack}>
              <img src="https://cdn.pixabay.com/photo/2016/11/21/15/38/beach-1846009_960_720.jpg"></img> 
         </div>
-        <Avatar />        
+        <Avatar name="Денис" secondName="Авилов" day="13" month="01"
+         year="1985" city="Харьков" education="ХАИ"  site="avilovdenis.pp.ua"/>        
         <Posts/>       
       </content>
     )
