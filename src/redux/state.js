@@ -4,16 +4,17 @@ let state = {
     dialogues: {
         users: [
             { id: 0, name: 'Denis' },
-            { id: 1, name: 'Julia' },
-            { id: 2, name: 'Ilya' },
-            { id: 3, name: 'Nikita' }
+            { id: 0, name: 'Denis' },
+            
         ],
         messages: [
             { id: 0, message: 'Привет я твой новый взгляд на обычные вещи' },
             { id: 1, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
             { id: 2, message: 'Тот кто ищет вынужден блуждать' },
             { id: 3, message: 'Никита Денисович' }
-        ]
+        ],
+        placeholder: 'Напиши что то!'
+
     },
     profile: {
         avatar: [
@@ -39,22 +40,42 @@ let state = {
             { id: 1, massedge: 'Julia привет это первое сообщение', like: '22', img: "https://static.knigavuhe.org/poster.jpg", alt: "user name" },
             { id: 2, massedge: 'Привет', like: '32', img: "https://img.7dach.ru/image/600/03/69/46/2018/05/15/d5a8ac-nomark.jpg", alt: "user name" },
             { id: 3, massedge: 'Julia привет это сообщение', like: '32', img: "https://static.knigavuhe.org/poster.jpg", alt: "user ne" },
-        ]
+        ],
+        inputState: 'Nova kraina'
+            
+               
     }
 }
 
+export let changeStateDialogues = (e) => {   
+    state.dialogues.placeholder = e;  
+     rerenderEntireTree(state); 
+}
+export let addDialogues = () => {  
+    debugger; 
+     let nuwObj = {
+        id: 0,
+         message: state.dialogues.placeholder,
+     }
+     state.dialogues.messages.push(nuwObj)
+     rerenderEntireTree(state);
+     state.dialogues.placeholder = 'Еще сообщение?'; 
+}
 
-export let addPost = (message)=>{
-    debugger;
+export let changeState = (e) => {   
+    state.profile.inputState = e;  
+     rerenderEntireTree(state); 
+}
+export let addPost = ()=>{
+    
     let newObj = {
         id: 4,
-        massedge: message,
+        massedge: state.profile.inputState,
         like: 90
     }
-
-    state.profile.posts.push(newObj);
-    
+    state.profile.posts.push(newObj);    
     rerenderEntireTree(state); 
+    state.profile.inputState = '';
 }
 
 export default state;

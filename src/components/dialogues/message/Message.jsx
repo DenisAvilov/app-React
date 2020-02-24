@@ -1,6 +1,5 @@
 import React from 'react';
 import d from './Message.module.css';
-import { NavLink, BrowserRouter } from 'react-router-dom';
 
 const Message = (props) =>{    
     return(    
