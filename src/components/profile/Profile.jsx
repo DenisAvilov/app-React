@@ -17,7 +17,8 @@ const Profile = (props) => {
         {imgBack}
       </div>
       {avatar}
-      <Posts posts={props.state.profile} addPost={props.addPost}/>
+      
+      <Posts posts={props.state.profile} newPostText={props.state.profile.inputState} addPost={props.addPost} changeState={ props.changeState}/>
     </content>
   )
 }
