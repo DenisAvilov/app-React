@@ -1,5 +1,6 @@
-import { rerenderEntireTree } from "../render";
-
+let rerenderEntireTree = () =>{
+    
+}  
 let state = {
     dialogues: {
         users: [
@@ -46,27 +47,26 @@ let state = {
                
     }
 }
-
-export let changeStateDialogues = (e) => {   
+export const changeStateDialogues = (e) => {   
     state.dialogues.placeholder = e;  
-     rerenderEntireTree(state); 
+     rerenderEntireTree(); 
 }
-export let addDialogues = () => {  
+export const addDialogues = () => {  
     debugger; 
      let nuwObj = {
         id: 0,
          message: state.dialogues.placeholder,
      }
      state.dialogues.messages.push(nuwObj)
-     rerenderEntireTree(state);
+     rerenderEntireTree();
      state.dialogues.placeholder = 'Еще сообщение?'; 
 }
 
-export let changeState = (e) => {   
+export const changeState = (e) => {   
     state.profile.inputState = e;  
-     rerenderEntireTree(state); 
+     rerenderEntireTree(); 
 }
-export let addPost = ()=>{
+export const addPost = ()=>{
     
     let newObj = {
         id: 4,
@@ -74,8 +74,12 @@ export let addPost = ()=>{
         like: 90
     }
     state.profile.posts.push(newObj);    
-    rerenderEntireTree(state); 
+    rerenderEntireTree(); 
     state.profile.inputState = '';
+}
+
+export const subscribe = (observer) =>{
+    rerenderEntireTree = observer
 }
 
 export default state;
