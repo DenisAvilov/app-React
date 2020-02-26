@@ -7,7 +7,7 @@ import Dialogs from './components/dialogues/Dialogues';
 import { Route } from 'react-router-dom';
 
 const App = (props) => {
-  
+
   return ( 
     <div className='app-wrapper'>
       <Header />
@@ -17,10 +17,16 @@ const App = (props) => {
         {/* <Route path='/dialogues' component={Dialogs} />  прокинуть данные через component не выйдет | использую render с анонимной функцией */}
         <Route path='/dialogues' render={() => <Dialogs
          addDialogues={props.addDialogues}
-         dialogues={props.state.dialogues}         
+         state={props.state}         
          changeDialogues={props.changeDialogues}/>} />
-        <Route path='/profile' render={() => <Profile state={props.state} addPost={props.addPost}
-         changeState={ props.changeState}/>} />
+         
+        <Route path='/profile' render={() => <Profile
+         
+         state={props.state} 
+         addPost={props.addPost}
+         changeState={ props.changeState}/>}
+         
+         />
       </div>
 
 

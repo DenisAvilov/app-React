@@ -12,10 +12,10 @@ const Dialog = (props) => {
      let changeDialogOnline = ()=>{
          let text = textarea.current.value
         props.changeDialogues(text)
-         console.log(text)
+       
       }
     let neuDialog =()=>{
-        debugger;
+      
      props.addDialogues();
     }
  

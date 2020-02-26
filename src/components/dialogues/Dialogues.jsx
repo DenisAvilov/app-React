@@ -4,15 +4,15 @@ import Message from './message/Message';
 import Dialog from './dialog/Dialog';
 
 const Dialogs = (props) => {
-    
-    const userName = props.dialogues.users.map(name => (<Dialog
+  
+    const userName = props.state.dialogues.users.map(name => (<Dialog
          id={name.id}
          name={name.name} 
-         dialogues={props.dialogues.placeholder}       
+         dialogues={props.state.dialogues.placeholder}       
          addDialogues={props.addDialogues} 
          changeDialogues={props.changeDialogues}/>));
 
-    const userMessage = props.dialogues.messages.map(message => (<Message
+    const userMessage = props.state.dialogues.messages.map(message => (<Message
          id={message.id}
          message={message.message}  />));
 
