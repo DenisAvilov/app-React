@@ -5,15 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-debugger;
-let rerenderEntireTree = (state)=>{ 
 
+let rerenderEntireTree = (state)=>{ 
     ReactDOM.render(<BrowserRouter><App        
         state={state}
-        addPost={store.addPost.bind(store)}
-        changeState={ store.changestate.bind(store)}
-        changeDialogues={store.changestateDialogues.bind(store)} 
-        addDialogues={store.addDialogues.bind(store)}
+        dispatch={store.dispatch.bind(store)}
     /></BrowserRouter>, document.getElementById('root'));  
     }
    

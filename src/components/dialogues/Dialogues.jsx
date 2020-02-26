@@ -9,8 +9,8 @@ const Dialogs = (props) => {
          id={name.id}
          name={name.name} 
          dialogues={props.state.dialogues.placeholder}       
-         addDialogues={props.addDialogues} 
-         changeDialogues={props.changeDialogues}/>));
+         dispatch={props.dispatch} 
+         />));
 
     const userMessage = props.state.dialogues.messages.map(message => (<Message
          id={message.id}

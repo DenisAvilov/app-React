@@ -5,18 +5,15 @@ import { NavLink } from 'react-router-dom';
 
 const Dialog = (props) => {
    
-    let path = "/dialogues/" + props.id;
-    
+    let path = "/dialogues/" + props.id;    
     let textarea = React.createRef();
-
-     let changeDialogOnline = ()=>{
-         let text = textarea.current.value
-        props.changeDialogues(text)
+    let changeDialogOnline = ()=>{
+        let text = textarea.current.value
+            props.dispatch({type : 'CHANGESTATE-DIALOGUES', text : text})
        
       }
-    let neuDialog =()=>{
-      
-     props.addDialogues();
+    let neuDialog =()=>{      
+     props.dispatch({type: 'ADD-DIALOGUES'});
     }
  
     return (
@@ -27,7 +24,7 @@ const Dialog = (props) => {
                  ref={textarea} value={props.dialogues} onChange={changeDialogOnline}
                ></textarea>
 
-                <button type="submmit" onClick={ () => neuDialog()}> Отправить </button>
+                <button type="submmit" onClick={neuDialog}> Отправить </button>
             </div>
         </div>
     )

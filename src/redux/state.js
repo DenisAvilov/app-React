@@ -1,11 +1,11 @@
 
 let store = {
-    _state : {
+    _state: {
         dialogues: {
             users: [
                 { id: 0, name: 'Denis' },
                 { id: 0, name: 'Denis' },
-                
+
             ],
             messages: [
                 { id: 0, message: 'Привет я твой новый взгляд на обычные вещи' },
@@ -15,7 +15,7 @@ let store = {
                 { id: 3, message: 'Никита Денисович' }
             ],
             placeholder: 'Напиши что то!'
-    
+
         },
         profile: {
             avatar: [
@@ -34,7 +34,7 @@ let store = {
                     avatar: "https://help-odnoklassniki.ru/wp-content/uploads/2019/01/framed-portrait.png",
                     avatarAlt: "фото профиля"
                 }
-    
+
             ],
             posts: [
                 { id: 0, massedge: 'Денис привет это первое сообщение', like: '21', img: "https://www.w3schools.com/howto/img_avatar.png", alt: "user name" },
@@ -45,47 +45,73 @@ let store = {
             placeholder: 'Nova kraina'
         }
     },
-   
-    getState(){
-      
-        return  this._state; 
-    },
-    changestateDialogues(e){   
-        this._state.dialogues.placeholder = e;  
-         this._callSubscriber(this._state); 
-    },
-    addDialogues(){  
-              
-         let nuwObj = {
-            id: 0,
-             message: this._state.dialogues.placeholder,
-         }
-         this._state.dialogues.messages.push(nuwObj)
-         this._callSubscriber(this._state);
-         this._state.dialogues.placeholder = 'Еще сообщение?'; 
-    },
-    changestate(e) { 
-          
-        this._state.profile.placeholder = e;  
-        this._callSubscriber(this._state); 
-    },
-    addPost() {         
-        let newObj = {
-            id: 4,
-            massedge: this._state.profile.placeholder,
-            like: 90
-        }
-        this._state.profile.posts.push(newObj);    
-        this._callSubscriber(this._state); 
-        this._state.profile.placeholder = '';
-    },
     _subscribe(observer) {
         this._callSubscriber = observer
     },
-    _callSubscriber() {     
-    }, 
-        
-} 
+    _callSubscriber() {
+    },
+    getState() {
+
+        return this._state;
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-DIALOGUES') {
+            let nuwObj = {
+                id: 0,
+                message: this._state.dialogues.placeholder,
+            }
+            this._state.dialogues.messages.push(nuwObj)
+            this._callSubscriber(this._state);
+            this._state.dialogues.placeholder = 'Еще сообщение?';
+        } else if (action.type === 'ADD-POST') {
+            let newObj = {
+                id: 4,
+                massedge: this._state.profile.placeholder,
+                like: 90
+            }
+            this._state.profile.posts.push(newObj);
+            this._callSubscriber(this._state);
+            this._state.profile.placeholder = '';
+        } else if (action.type === 'CHANGE-STATE') {
+            this._state.profile.placeholder = action.text;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'CHANGESTATE-DIALOGUES') {
+            this._state.dialogues.placeholder = action.text
+            this._callSubscriber(this._state);
+        }
+    },
+    // changestateDialogues(e){   
+    //     this._state.dialogues.placeholder = e;  
+    //      this._callSubscriber(this._state); 
+    // },
+    // addDialogues(){    
+
+    //         let nuwObj = {
+    //             id: 0,
+    //              message: this._state.dialogues.placeholder,
+    //          }
+    //          this._state.dialogues.messages.push(nuwObj)
+    //          this._callSubscriber(this._state);
+    //          this._state.dialogues.placeholder = 'Еще сообщение?'; 
+
+    // },
+    // changestate(e) {           
+    //     this._state.profile.placeholder = e;  
+    //     this._callSubscriber(this._state); 
+    // },
+    // addPost() {         
+    //     let newObj = {
+    //         id: 4,
+    //         massedge: this._state.profile.placeholder,
+    //         like: 90
+    //     }
+    //     this._state.profile.posts.push(newObj);    
+    //     this._callSubscriber(this._state); 
+    //     this._state.profile.placeholder = '';
+    // }
+
+
+}
 
 window.store = store;
 export default store;

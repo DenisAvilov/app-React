@@ -8,30 +8,26 @@ import { Route } from 'react-router-dom';
 
 const App = (props) => {
 
-  return ( 
+  return (
     <div className='app-wrapper'>
       <Header />
       <Nav />
       <div className="profile">
+
         {/* <Route exact path='/dialogues' component={Dialogs} />  exact - точное совпадение ===  Route : следит за адресной строкой path */}
         {/* <Route path='/dialogues' component={Dialogs} />  прокинуть данные через component не выйдет | использую render с анонимной функцией */}
-        <Route path='/dialogues' render={() => <Dialogs
-         addDialogues={props.addDialogues}
-         state={props.state}         
-         changeDialogues={props.changeDialogues}/>} />
-         
-        <Route path='/profile' render={() => <Profile
-         
-         state={props.state} 
-         addPost={props.addPost}
-         changeState={ props.changeState}/>}
-         
+      
+        <Route path='/dialogues' render={() => 
+            <Dialogs dispatch={props.dispatch} state={props.state} />} 
          />
+
+        <Route path='/profile' render={() =>
+           <Profile state={props.state} dispatch={props.dispatch} />} 
+        />
+
       </div>
-
-
     </div>
- 
+
   );
 }
 
