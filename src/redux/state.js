@@ -1,4 +1,11 @@
-
+const ADD_DIALOGUES = 'ADD-DIALOGUES';
+const ADD_POST = 'ADD-POST'; 
+const CHANGE_STATE = 'CHANGE-STATE';  
+const CHANGESTATE_DIALOGUES = 'CHANGESTATE-DIALOGUES';
+export let CHANGE__DIALOGUES = (text)=> ({type : 'CHANGESTATE-DIALOGUES', text : text}); //ActionCreator
+export let ADD__DIALOG = () =>({type: 'ADD-DIALOGUES'});
+export let CHANGE__STATE = (text) => ({ type: 'CHANGE-STATE', text: text })
+export let ADD__POST = ()=>({ type: 'ADD-POST' })    
 let store = {
     _state: {
         dialogues: {
@@ -55,7 +62,7 @@ let store = {
         return this._state;
     },
     dispatch(action) {
-        if (action.type === 'ADD-DIALOGUES') {
+        if (action.type === ADD_DIALOGUES) {
             let nuwObj = {
                 id: 0,
                 message: this._state.dialogues.placeholder,
@@ -63,7 +70,7 @@ let store = {
             this._state.dialogues.messages.push(nuwObj)
             this._callSubscriber(this._state);
             this._state.dialogues.placeholder = 'Еще сообщение?';
-        } else if (action.type === 'ADD-POST') {
+        } else if (action.type === ADD_POST) {
             let newObj = {
                 id: 4,
                 massedge: this._state.profile.placeholder,
@@ -72,10 +79,10 @@ let store = {
             this._state.profile.posts.push(newObj);
             this._callSubscriber(this._state);
             this._state.profile.placeholder = '';
-        } else if (action.type === 'CHANGE-STATE') {
+        } else if (action.type === CHANGE_STATE) {
             this._state.profile.placeholder = action.text;
             this._callSubscriber(this._state);
-        } else if (action.type === 'CHANGESTATE-DIALOGUES') {
+        } else if (action.type === CHANGESTATE_DIALOGUES) {
             this._state.dialogues.placeholder = action.text
             this._callSubscriber(this._state);
         }

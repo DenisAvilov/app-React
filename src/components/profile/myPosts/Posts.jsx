@@ -1,19 +1,18 @@
 import React from 'react';
 import d from './Posts.module.css';
 import Post from './post/Post.jsx'
+import { ADD__POST, CHANGE__STATE } from '../../../redux/state';
 const Posts = (props) => {
+    
     let postEllement = React.createRef();
     let onChange = () => {
-
         let text = postEllement.current.value;
         //    props.changeState(text)      
-        props.dispatch(
-            { type: 'CHANGE-STATE', text: text }
-        )
+        props.dispatch( CHANGE__STATE(text) )
     }
     let addPost = () => {
         //    props.addPost()
-        props.dispatch({ type: 'ADD-POST' })
+        props.dispatch( ADD__POST() )
     }
 
     const postItem = props.posts.posts.map(content => (<Post id={content.id}
