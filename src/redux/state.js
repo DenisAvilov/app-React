@@ -1,11 +1,6 @@
-const ADD_DIALOGUES = 'ADD-DIALOGUES';
-const ADD_POST = 'ADD-POST'; 
-const CHANGE_STATE = 'CHANGE-STATE';  
-const CHANGESTATE_DIALOGUES = 'CHANGESTATE-DIALOGUES';
-export let CHANGE__DIALOGUES = (text)=> ({type : 'CHANGESTATE-DIALOGUES', text : text}); //ActionCreator
-export let ADD__DIALOG = () =>({type: 'ADD-DIALOGUES'});
-export let CHANGE__STATE = (text) => ({ type: 'CHANGE-STATE', text: text })
-export let ADD__POST = ()=>({ type: 'ADD-POST' })    
+import dialogues from "./dialogues-reducer";
+import profile from "./profile-reducer";
+
 let store = {
     _state: {
         dialogues: {
@@ -19,7 +14,7 @@ let store = {
                 { id: 1, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
                 { id: 2, message: 'Тот кто ищет вынужден блуждать' },
                 { id: 3, message: 'Никита Денисович' },
-                { id: 3, message: 'Никита Денисович' }
+                { id: 4, message: 'Никита Никита' },
             ],
             placeholder: 'Напиши что то!'
 
@@ -61,62 +56,15 @@ let store = {
 
         return this._state;
     },
-    dispatch(action) {
-        if (action.type === ADD_DIALOGUES) {
-            let nuwObj = {
-                id: 0,
-                message: this._state.dialogues.placeholder,
-            }
-            this._state.dialogues.messages.push(nuwObj)
-            this._callSubscriber(this._state);
-            this._state.dialogues.placeholder = 'Еще сообщение?';
-        } else if (action.type === ADD_POST) {
-            let newObj = {
-                id: 4,
-                massedge: this._state.profile.placeholder,
-                like: 90
-            }
-            this._state.profile.posts.push(newObj);
-            this._callSubscriber(this._state);
-            this._state.profile.placeholder = '';
-        } else if (action.type === CHANGE_STATE) {
-            this._state.profile.placeholder = action.text;
-            this._callSubscriber(this._state);
-        } else if (action.type === CHANGESTATE_DIALOGUES) {
-            this._state.dialogues.placeholder = action.text
-            this._callSubscriber(this._state);
-        }
+    dispatch(action) { 
+       //this._state.dialogues принимает то что фозвращяет Deducer функция
+       // dialogues()     
+       this._state.profile = profile(this._state.profile, action);  
+       this._state.dialogues = dialogues(this._state.dialogues, action);  
+
+
+       this._callSubscriber(this._state);                
     },
-    // changestateDialogues(e){   
-    //     this._state.dialogues.placeholder = e;  
-    //      this._callSubscriber(this._state); 
-    // },
-    // addDialogues(){    
-
-    //         let nuwObj = {
-    //             id: 0,
-    //              message: this._state.dialogues.placeholder,
-    //          }
-    //          this._state.dialogues.messages.push(nuwObj)
-    //          this._callSubscriber(this._state);
-    //          this._state.dialogues.placeholder = 'Еще сообщение?'; 
-
-    // },
-    // changestate(e) {           
-    //     this._state.profile.placeholder = e;  
-    //     this._callSubscriber(this._state); 
-    // },
-    // addPost() {         
-    //     let newObj = {
-    //         id: 4,
-    //         massedge: this._state.profile.placeholder,
-    //         like: 90
-    //     }
-    //     this._state.profile.posts.push(newObj);    
-    //     this._callSubscriber(this._state); 
-    //     this._state.profile.placeholder = '';
-    // }
-
 
 }
 

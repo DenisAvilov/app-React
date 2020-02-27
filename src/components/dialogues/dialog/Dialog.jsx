@@ -1,13 +1,14 @@
 import React from 'react';
 import d from './../Dialogues.module.css';
 import { NavLink } from 'react-router-dom';
-import { ADD__DIALOG, CHANGE__DIALOGUES  } from '../../../redux/state'; //ActionCreator
+import { ADD__DIALOG, CHANGE__DIALOGUES  } from '../../../redux/dialogues-reducer'; //ActionCreator
 
 
 const Dialog = (props) => {
     let path = "/dialogues/" + props.id;
     let textarea = React.createRef();
     let changeDialogOnline = () => {
+      
         let text = textarea.current.value
         props.dispatch(CHANGE__DIALOGUES(text))
     }

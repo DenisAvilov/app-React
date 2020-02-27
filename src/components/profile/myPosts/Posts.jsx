@@ -1,11 +1,12 @@
 import React from 'react';
 import d from './Posts.module.css';
 import Post from './post/Post.jsx'
-import { ADD__POST, CHANGE__STATE } from '../../../redux/state';
+import { ADD__POST, CHANGE__STATE } from '../../../redux/profile-reducer';
 const Posts = (props) => {
     
     let postEllement = React.createRef();
     let onChange = () => {
+   
         let text = postEllement.current.value;
         //    props.changeState(text)      
         props.dispatch( CHANGE__STATE(text) )
