@@ -1,19 +1,18 @@
 import React from 'react';
 import d from './Posts.module.css';
 import Post from './post/Post.jsx'
-import { ADD__POST, CHANGE__STATE } from '../../../redux/profile-reducer';
 const Posts = (props) => {
-    
+        
     let postEllement = React.createRef();
-    let onChange = () => {
-   
+
+    let onChange = () => {   
         let text = postEllement.current.value;
-        //    props.changeState(text)      
-        props.dispatch( CHANGE__STATE(text) )
+          props.placeholder(text)      
+        // props.dispatch( CHANGE__STATE(text) )
     }
-    let addPost = () => {
-        //    props.addPost()
-        props.dispatch( ADD__POST() )
+    let onAddPost = () => {
+           props.addPost()
+        // props.dispatch( ADD__POST() )
     }
 
     const postItem = props.posts.posts.map(content => (<Post id={content.id}
@@ -26,7 +25,7 @@ const Posts = (props) => {
                 <input type="textarea" ref={postEllement}
                     onChange={onChange} value={props.posts.placeholder}
                 />
-                <button onClick={addPost}>Отправить</button>
+                <button onClick={onAddPost}>Отправить</button>
                 <button >Удалить</button>
             </div>
             {postItem}

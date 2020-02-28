@@ -3,8 +3,9 @@ import './App.css';
 import Header from './components/header/Header';
 import Nav from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
-import Dialogs from './components/dialogues/Dialogues';
+import DialogsContainer from './components/dialogues/DialoguesContainer';
 import { Route } from 'react-router-dom';
+
 
 const App = (props) => {
 
@@ -18,7 +19,7 @@ const App = (props) => {
         {/* <Route path='/dialogues' component={Dialogs} />  прокинуть данные через component не выйдет | использую render с анонимной функцией */}
       
         <Route path='/dialogues' render={() => 
-            <Dialogs dispatch={props.dispatch} state={props.state} />} 
+            <DialogsContainer dispatch={props.dispatch} state={props.state} />} 
          />
 
         <Route path='/profile' render={() =>
