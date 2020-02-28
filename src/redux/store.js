@@ -18,7 +18,7 @@ let store = {
             ],
             placeholder: 'Напиши что то!'
 
-        },
+        }, 
         profile: {
             avatar: [
                 {
@@ -47,7 +47,7 @@ let store = {
             placeholder: 'Nova kraina'
         }
     },
-    _subscribe(observer) {
+    subscribe(observer) {
         this._callSubscriber = observer
     },
     _callSubscriber() {
