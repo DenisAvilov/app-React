@@ -4,6 +4,7 @@ import dialogues from "./dialogues-reducer";
 
 
 // Функция обединение редьюсеров 
+
 let reducers = combineReducers({
     profile : profile,
     dialogues : dialogues
@@ -11,7 +12,7 @@ let reducers = combineReducers({
 
 let store = createStore(reducers);  //Создание объекта store
 
-
+window.store = store;
 
 
 export default store;

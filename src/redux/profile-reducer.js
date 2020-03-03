@@ -29,11 +29,14 @@ let initialState = {
         ],
         placeholder: 'Nova kraina'
     }
- const profile = (state = initialState, action )=>{            
+    
+ const profile = (state = initialState, action )=>{ 
+       
            switch(action.type){
-            case CHANGE_STATE:
-                state.placeholder = action.text;
-                return state;
+            case CHANGE_STATE: 
+                let statePlace = {...state};                           
+                statePlace.placeholder = action.text;
+                return statePlace;
             case ADD_POST:
                 let obj = {
                     id: 0,
@@ -42,9 +45,11 @@ let initialState = {
                     img: "https://static6.depositphotos.com/1000422/567/i/450/depositphotos_5675738-stock-photo-emoticon.jpg",
                     alt: "New Name"
                 } 
-                state.posts.push(obj);
-                state.placeholder = ''
-                return state;
+                let stateCopy = { ...state };
+                stateCopy.posts = [...state.posts];
+                stateCopy.posts.push(obj);
+                stateCopy.placeholder = 'Больше постов'
+                return stateCopy;
            }
             return state;
    

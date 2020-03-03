@@ -2,19 +2,24 @@ import React from 'react';
 import d from './../Dialogues.module.css';
 import { NavLink } from 'react-router-dom';
 
-
 const Dialog = (props) => {
+
     let path = "/dialogues/" + props.id;
     let textarea = React.createRef();
-    let changeDialogOnline = () => {
-        let text = textarea.current.value
-        props.placeholder(text)
-        // props.dispatch(CHANGE__DIALOGUES(text))
-    }
-    let onAddDialog = () => {
+
+
+   let changeDialogOnline = () => {
+         let text = textarea.current.value
+      
+        props.chengePlaceholder( text ) 
         
-        // props.dispatch(ADD__DIALOG());
+        // props.funcPlacholder(text)     
+    }
+
+     let onAddDialog = () => {        
         props.addDialog();
+         
+
     }
 
     return (
@@ -31,6 +36,8 @@ const Dialog = (props) => {
                  onClick={onAddDialog}> Отправить 
                  </button>
             </div>
+
+
         </div>
     )
 }

@@ -21,16 +21,19 @@ let initialState = {
 const dialogues = ( state = initialState, action )=>{  
     switch(action.type ) {
         case CHANGESTATE_DIALOGUES:
-        state.placeholder = action.text       
-        return state
+        let newState = {...state}    
+        newState.placeholder = action.text       
+        return newState
         case ADD_DIALOGUES:
             let nuwObj = {
                 id: 0,
                 message: state.placeholder,
             }
-            state.messages.push(nuwObj)        
-           state.placeholder = 'Еще сообщение?';
-           return state
+            let copyState = {...state};           
+            copyState.messages = [...state.messages];           
+            copyState.messages.push(nuwObj);     
+            copyState.placeholder = 'Еще сообщение?';
+           return copyState
          default:
              return state  
     }
