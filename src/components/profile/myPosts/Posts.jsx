@@ -16,7 +16,7 @@ const Posts = (props) => {
         // props.dispatch( ADD__POST() )
     }
 
-    const postItem = props.posts.map(content => (<Post id={content.id}
+    const postItem = props.posts.map(content => (<Post key={content.id} id={content.id}
          massedge={content.massedge} like={content.like} img={content.img} />));
 
     return (

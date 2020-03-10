@@ -5,16 +5,16 @@ let store = {
     _state: {
         dialogues: {
             users: [
-                { id: 0, name: 'Denis' },
-                { id: 0, name: 'Denis' },
+                { id: 1, name: 'Denis'},
+                { id: 2, name: 'Denis'},
 
             ],
             messages: [
-                { id: 0, message: 'Привет я твой новый взгляд на обычные вещи' },
-                { id: 1, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
-                { id: 2, message: 'Тот кто ищет вынужден блуждать' },
-                { id: 3, message: 'Никита Денисович' },
-                { id: 4, message: 'Никита Никита' },
+                { id: 1, message: 'Привет я твой новый взгляд на обычные вещи' },
+                { id: 2, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
+                { id: 3, message: 'Тот кто ищет вынужден блуждать' },
+                { id: 4, message: 'Никита Денисович' },
+                { id: 5, message: 'Никита Никита' },
             ],
             placeholder: 'Напиши что то!'
 
@@ -22,7 +22,7 @@ let store = {
         profile: {
             avatar: [
                 {
-                    id: 0,
+                    id: 1,
                     backgroundImg: "https://cdn.pixabay.com/photo/2016/11/21/15/38/beach-1846009_960_720.jpg",
                     backgroundAlt: 'foto',
                     name: 'Денис',
@@ -39,11 +39,11 @@ let store = {
 
             ],
             posts: [
-                { id: 0, massedge: 'Денис привет это первое сообщение', like: '21', img: "https://www.w3schools.com/howto/img_avatar.png", alt: "user name" },
-                { id: 1, massedge: 'Julia привет это первое сообщение', like: '22', img: "https://static.knigavuhe.org/poster.jpg", alt: "user name" },
-                { id: 2, massedge: 'Привет', like: '32', img: "https://img.7dach.ru/image/600/03/69/46/2018/05/15/d5a8ac-nomark.jpg", alt: "user name" },
-                { id: 3, massedge: 'Julia привет это сообщение', like: '32', img: "https://static.knigavuhe.org/poster.jpg", alt: "user ne" },
-                { id: 3, massedge: 'сообщение сообщение', like: '33', img: "https://static.knigavuhe.org/poster.jpg", alt: "user ne" },
+                { id: 1, massedge: 'Денис привет это первое сообщение', like: '21', img: "https://www.w3schools.com/howto/img_avatar.png", alt: "user name" },
+                { id: 2, massedge: 'Julia привет это первое сообщение', like: '22', img: "https://static.knigavuhe.org/poster.jpg", alt: "user name" },
+                { id: 3, massedge: 'Привет', like: '32', img: "https://img.7dach.ru/image/600/03/69/46/2018/05/15/d5a8ac-nomark.jpg", alt: "user name" },
+                { id: 4, massedge: 'Julia привет это сообщение', like: '32', img: "https://static.knigavuhe.org/poster.jpg", alt: "user ne" },
+                { id: 5, massedge: 'сообщение сообщение', like: '33', img: "https://static.knigavuhe.org/poster.jpg", alt: "user ne" },
             ],
             placeholder: 'Nova kraina'
         }

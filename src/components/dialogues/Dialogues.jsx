@@ -6,14 +6,17 @@ import Dialog from './dialog/Dialog';
 const Dialogues = (props) => {
 
     const userName = props.state.users.map(name =>
-         (<Dialog  id={name.id} name={name.name} 
-         dialogues={props.state.placeholder} 
+         (<Dialog key={name.id} id={name.id} name={name.name} 
+         follow={name.follow}            
+         dialogues={props.state.placeholder}        
          addDialog={props.addDialog}
-         chengePlaceholder={props.chengePlaceholder}   
+         chengePlaceholder={props.chengePlaceholder}
+         unFollow={props.unFollow}
+         followFc={props.follow}
          />));
   
     const userMessage = props.state.messages.map(message => 
-       (<Message  id={message.id}
+       (<Message key={message.id} id={message.id}
        message={message.message}  />));
 
     return (

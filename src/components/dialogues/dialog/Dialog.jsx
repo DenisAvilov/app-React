@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Dialog = (props) => {
 
     let path = "/dialogues/" + props.id;
-    let textarea = React.createRef();
+    let textarea = React.createRef(); 
 
 
    let changeDialogOnline = () => {
@@ -17,8 +17,7 @@ const Dialog = (props) => {
     }
 
      let onAddDialog = () => {        
-        props.addDialog();
-         
+        props.addDialog();         
 
     }
 
@@ -27,7 +26,7 @@ const Dialog = (props) => {
             <NavLink to={path}  activeClassName={d.active}>
                 {props.name}</NavLink>
             <div>
-                <textarea name="" id="" cols="20" rows="1"
+                <textarea  cols="20" rows="1"
                     ref={textarea} value={props.dialogues}
                      onChange={changeDialogOnline}
                 ></textarea>
@@ -35,6 +34,9 @@ const Dialog = (props) => {
                 <button type="submmit"
                  onClick={onAddDialog}> Отправить 
                  </button>
+                
+                 {props.follow ? <button onClick={ () => props.unFollow(props.id)  } className={d.button_follow}>Одписка </button> :  <button onClick={ ()=> props.followFc(props.id)  } className={d.button_follow}>Подписка</button>      }
+
             </div>
 
 
