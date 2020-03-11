@@ -3,6 +3,10 @@
     grid-template-columns: 2fr 10fr;
     font-size: 1.2em;
 }
+.dialog h2{
+    text-align: center;
+
+}
 .dialogsi_items{
     padding: 10px;
     display: block;
@@ -32,4 +36,14 @@
 }
 .button_follow{
     margin-left: 5px;
+}
+.img_logo_wrap{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+ }
+.img_logo{
+    width: 100%;    
+    object-fit: fill;
 }

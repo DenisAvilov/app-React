@@ -7,28 +7,30 @@ export let _FOLLOW = (userId) => ({type : 'FOLLOW', userId});
 const  UNFOLLOW = 'UNFOLLOW';
 export let UN_FOLLOW = (userId) => ({type : 'UNFOLLOW', userId});
 
-const SET_STATE = 'SET-STATE'; // не в работе
-export let  SET__STATE = ()=>({ type: 'SET-STATE'})
+const SET_STATE = 'SET-STATE'; 
+export let  SET__STATE = (usersData)=>({ type: 'SET-STATE',  usersData})
 
 
 
 
 let initialState = {
-    users: [
-        { id: 1, name: 'Denis', follow: false },
-        { id: 2, name: 'Egor', follow: false },
+     users: [
+    //     { id: 1, name: 'Denis', follow: false },
+    //     { id: 2, name: 'Egor', follow: false },
 
-    ],
-    messages: [
-        { id: 1, message: 'Привет я твой новый взгляд на обычные вещи' },
-        { id: 2, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
-        { id: 3, message: 'Тот кто ищет вынужден блуждать' },
-        { id: 4, message: 'Никита Денисович' },
-        { id: 5, message: 'Никита Никита' },
-    ],
+   ],
+     messages: [
+    //     { id: 1, message: 'Привет я твой новый взгляд на обычные вещи' },
+    //     { id: 2, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
+    //     { id: 3, message: 'Тот кто ищет вынужден блуждать' },
+    //     { id: 4, message: 'Никита Денисович' },
+    //     { id: 5, message: 'Никита Никита' },
+     ],
+    photos: [],
     placeholder: 'Напиши что то!'
 
 } 
+
 const dialogues = ( state = initialState, action )=>{  
     switch(action.type ) {
         case CHANGESTATE_DIALOGUES:
@@ -62,8 +64,14 @@ const dialogues = ( state = initialState, action )=>{
                       } 
                   return el; })
                   }; 
-        //  case SET_STATE:
-        //     alert('no users')
+          case SET_STATE: 
+     
+          return{ ...state,
+            users : action.usersData,
+            messages: action.usersData,
+            photos: action.usersData.photos
+            // placeholder: action.usersData
+            };                    
          default:
              return state  
     }
