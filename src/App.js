@@ -5,7 +5,8 @@ import Nav from './components/navbar/Navbar';
 
 import { Route } from 'react-router-dom';
 import ProfileContainer from './components/profile/ProfileContainer';
-import DialoguesContainer from './components/dialogues/DialoguesContainer';
+import DialoguesContainer from './components/test/DialoguesContainer';
+import UsersContainer from './components/dialogues/UsersContainer';
 
 
 const App = (props) => {
@@ -20,13 +21,15 @@ const App = (props) => {
         {/* <Route path='/dialogues' component={Dialogs} />  прокинуть данные через component не выйдет | использую render с анонимной функцией */}
       
         <Route path='/dialogues' render={() => 
-            <DialoguesContainer />} 
+            <UsersContainer />} 
          />
 
         <Route path='/profile' render={() =>
            <ProfileContainer  />} 
         />
-
+      
+        
+ 
       </div>
     </div>
 

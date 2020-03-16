@@ -1,77 +1,72 @@
-const CHANGESTATE_DIALOGUES = 'CHANGESTATE-DIALOGUES';
-export let CHANGE__DIALOGUES = (text)=> ({type : 'CHANGESTATE-DIALOGUES', text : text}); //ActionCreator
-const ADD_DIALOGUES = 'ADD-DIALOGUES';
-export let ADD__DIALOG = () =>({type: 'ADD-DIALOGUES'});
+//ActionCreator
 const  FOLLOW = 'FOLLOW';
 export let _FOLLOW = (userId) => ({type : 'FOLLOW', userId});  
+
 const  UNFOLLOW = 'UNFOLLOW';
 export let UN_FOLLOW = (userId) => ({type : 'UNFOLLOW', userId});
 
 const SET_STATE = 'SET-STATE'; 
-export let  SET__STATE = (usersData)=>({ type: 'SET-STATE',  usersData})
+export let  SET__STATE = (usersData)=>({ type: SET_STATE,  usersData})
 
+const PAGINATI_ON = 'PAGINATION';
+export let PAGINATION = (numberPage) => ( { type: PAGINATI_ON, numberPage} )
 
+const PAGINATION_NEXT = 'PAGINATION-NEXT';
+export let PAGINATION__NEXT = (numeric) => ( {type: PAGINATION_NEXT, numeric})
 
 
 let initialState = {
      users: [
-    //     { id: 1, name: 'Denis', follow: false },
-    //     { id: 2, name: 'Egor', follow: false },
-
-   ],
-     messages: [
-    //     { id: 1, message: 'Привет я твой новый взгляд на обычные вещи' },
-    //     { id: 2, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
-    //     { id: 3, message: 'Тот кто ищет вынужден блуждать' },
-    //     { id: 4, message: 'Никита Денисович' },
-    //     { id: 5, message: 'Никита Никита' },
-     ],
-    photos: [],
-    placeholder: 'Напиши что то!'
-
+        // { id: 1, name: 'Denis', followed: false, status: null, uniqueUrlNam: null,
+        //    photos: { 
+        //        small: null,
+        //        large: null 
+        //     } 
+        // },
+        // { id: 2, name: 'Egor', followed: true, status: null, uniqueUrlNam: null,
+        //     photos: { 
+        //         small: "https://cdn1.flamp.ru/cbdfd4792aaddd457030e8f03b7b7b63.png",
+        //         large: null 
+        //     }
+        //  },
+      ],
+      totalCount: 19,
+      pageSize :  5,
+      currentPage: 1,
+     
+  
+    
 } 
-
-const dialogues = ( state = initialState, action )=>{  
-    switch(action.type ) {
-        case CHANGESTATE_DIALOGUES:
-        let newState = {...state}    
-        newState.placeholder = action.text       
-        return newState
-        case ADD_DIALOGUES:
-            let nuwObj = {
-                id: 0,
-                message: state.placeholder,
-            }
-            return{ // скопировал state, после запитой перечичлил нужные мне свойства из поверхносной копии.
-                ...state,                
-                // в своистве massages сделал глубокую копию масива, добавив новый обект в конец масива вместо Push()  
-                messages : [ ...state.messages, nuwObj ],
-                //Обнулил 
-                placeholder : 'Еще сообщение?',
-            };          
-        case FOLLOW:            
+const dialogues = ( state = initialState, action )=>{     
+    switch(action.type ) { 
+        
+        case PAGINATI_ON:           
+            return{
+                ...state,
+                currentPage: action.numberPage
+            }           
+        case FOLLOW:                 
             return{
                 ...state,
                 users: state.users.map( el => {
-                     if(el.id === action.userId){ return{ ...el,  follow: true  } }                      
+                     if(el.id === action.userId){
+                          return{ ...el,  followed: true  } }                      
                    return el; })
-                 };                
-         case UNFOLLOW:             
+                };                                        
+         case UNFOLLOW:           
           return{...state,
               users: state.users.map( el => 
                   { if(el.id === action.userId){
-                         return{ ...el, follow: false } 
+                         return{ ...el, followed: false } 
                       } 
                   return el; })
                   }; 
-          case SET_STATE: 
-     
-          return{ ...state,
-            users : action.usersData,
-            messages: action.usersData,
-            photos: action.usersData.photos
-            // placeholder: action.usersData
-            };                    
+
+         case SET_STATE:            
+           return{ ...state,
+             users:  action.usersData.items, 
+             totalCount :  action.usersData.totalCount                      
+             };                    
          default:
              return state  
     }
