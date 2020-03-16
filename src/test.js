@@ -24,4 +24,4 @@ console.log("a = : " + a.slassRoom.teather.name)
 console.log("b = : " + b.slassRoom.teather.name)
 console.log("b = : " + b.name)
 window.a = a;
-window.b = b;
+window.b = b;ad

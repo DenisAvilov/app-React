@@ -5,19 +5,10 @@ let store = {
     _state: {
         dialogues: {
             users: [
-                { id: 1, name: 'Denis'},
-                { id: 2, name: 'Denis'},
-
-            ],
-            messages: [
-                { id: 1, message: 'Привет я твой новый взгляд на обычные вещи' },
-                { id: 2, message: 'Ты слышал обо мне, но не доверял себе, что ты справишся' },
-                { id: 3, message: 'Тот кто ищет вынужден блуждать' },
-                { id: 4, message: 'Никита Денисович' },
-                { id: 5, message: 'Никита Никита' },
-            ],
-            placeholder: 'Напиши что то!'
-
+                { id: 1, name: 'Denis',followed: true},
+                { id: 2, name: 'Denis', followed: false },
+            ]
+        
         }, 
         profile: {
             avatar: [
