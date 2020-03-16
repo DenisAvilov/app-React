@@ -19,7 +19,7 @@ const Users = (props) => {
             <div>
         <span>Prev</span>
           { pagination.map(el =>  
-             <span onClick={ ()=> props.onPagination(el) } className={ el ? d.currentPageActive : d.currentPage}>{el}</span>        
+             <span onClick={ ()=> props.onPagination(el) } className={ props.currentPage === el ? d.currentPageActive  : d.currentPage   }>{el}</span>        
           ) }
         <span>Nex</span>
        </div> 
