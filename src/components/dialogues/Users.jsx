@@ -1,7 +1,7 @@
 import React from 'react';
 import d from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-
+import preloader from './../../imgs/preloader.gif';
 const Users = (props) => {
     let path = '/dialogues/';  
 
@@ -13,15 +13,17 @@ const Users = (props) => {
           }
           pagination.push(i)   
             } 
-  
+
     return (
     <div> 
-            <div>
-        <span>Prev</span>
-          { pagination.map(el =>  
-             <span onClick={ ()=> props.onPagination(el) } className={ props.currentPage === el ? d.currentPageActive  : d.currentPage   }>{el}</span>        
-          ) }
-        <span>Nex</span>
+       
+      { props.isloading && <img src={preloader} alt=""/>  } 
+       <div>
+          <span>Prev</span>
+            { pagination.map(el =>  
+              <span onClick={ ()=> props.onPagination(el) } className={ props.currentPage === el ? d.currentPageActive  : d.currentPage   }>{el}</span>        
+            ) }
+          <span>Nex</span>
        </div> 
 
         <div className={d.dialogs}>           
@@ -39,7 +41,7 @@ const Users = (props) => {
                          </NavLink>
                         {user.status === null ? <p>Здесь будет Ваш статус</p> : <p>{user.status}</p>}
                         {user.followed === true ?
-                            <button onClick={() => props.unfollow(user.id)} > Удалить из друзей</button>
+                            <button onClick={() => props.unfollow(user.id) } > Удалить из друзей</button>
                             :
                             <button onClick={() => props.follow(user.id)} > Добавить в друзья</button>}
 
