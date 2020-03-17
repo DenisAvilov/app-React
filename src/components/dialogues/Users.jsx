@@ -16,6 +16,7 @@ const Users = (props) => {
 
     return (
     <div> 
+<<<<<<< HEAD
        
       { props.isloading && <img src={preloader} alt=""/>  } 
        <div>
@@ -24,6 +25,14 @@ const Users = (props) => {
               <span onClick={ ()=> props.onPagination(el) } className={ props.currentPage === el ? d.currentPageActive  : d.currentPage   }>{el}</span>        
             ) }
           <span>Nex</span>
+=======
+            <div>
+        <span>Prev</span>
+          { pagination.map(el =>  
+             <span onClick={ ()=> props.onPagination(el) } className={ props.currentPage === el ? d.currentPageActive  : d.currentPage   }>{el}</span>        
+          ) }
+        <span>Nex</span>
+>>>>>>> 12b4799c7e914e283071fa6f56256a1fb7530ea8
        </div> 
 
         <div className={d.dialogs}>           
