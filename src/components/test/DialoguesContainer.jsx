@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { _FOLLOW, UN_FOLLOW } from '../../redux/dialogues-reducer';
+import { follow, unfollow } from '../../redux/dialogues-reducer';
 import { connect } from 'react-redux';
 import Dialogues from './Dialogues';
 
@@ -11,16 +11,16 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+// let mapDispatchToProps = (dispatch) => {
     
-    return{       
-      follow: (userId)=>{ dispatch( _FOLLOW(userId) ) },
-      unfollow: (userId)=>{ dispatch( UN_FOLLOW(userId) ) }
-    }
+//     return{       
+//       follow: (userId)=>{ dispatch( _FOLLOW(userId) ) },
+//       unfollow: (userId)=>{ dispatch( UN_FOLLOW(userId) ) }
+//     }
 
-}
+// }
 
-const DialoguesContainer = connect( mapStateToProps, mapDispatchToProps )(Dialogues)
+const DialoguesContainer = connect( mapStateToProps, {follow, unfollow} )(Dialogues)
 
 
  export default DialoguesContainer;

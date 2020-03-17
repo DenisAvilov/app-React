@@ -1,18 +1,11 @@
 //ActionCreator
-const  FOLLOW = 'FOLLOW';
-export let _FOLLOW = (userId) => ({type : 'FOLLOW', userId});  
-
+const  FOLLOW = 'FOLLOW'; 
 const  UNFOLLOW = 'UNFOLLOW';
-export let UN_FOLLOW = (userId) => ({type : 'UNFOLLOW', userId});
-
-const SET_STATE = 'SET-STATE'; 
-export let  SET__STATE = (usersData)=>({ type: SET_STATE,  usersData})
-
+const SET_STATE = 'SET-STATE';
 const PAGINATI_ON = 'PAGINATION';
-export let PAGINATION = (numberPage) => ( { type: PAGINATI_ON, numberPage} )
-
 const PAGINATION_NEXT = 'PAGINATION-NEXT';
-export let PAGINATION__NEXT = (numeric) => ( {type: PAGINATION_NEXT, numeric})
+const LOADING = 'LOADING';
+
 
 
 let initialState = {
@@ -33,13 +26,12 @@ let initialState = {
       totalCount: 19,
       pageSize :  5,
       currentPage: 1,
-     
+      isLoading: true
   
     
 } 
 const dialogues = ( state = initialState, action )=>{     
-    switch(action.type ) { 
-        
+    switch(action.type ) {         
         case PAGINATI_ON:           
             return{
                 ...state,
@@ -66,7 +58,12 @@ const dialogues = ( state = initialState, action )=>{
            return{ ...state,
              users:  action.usersData.items, 
              totalCount :  action.usersData.totalCount                      
-             };                    
+             };   
+         case LOADING:
+            
+             return{...state,
+            isLoading: action.boolean
+            }
          default:
              return state  
     }
@@ -75,6 +72,13 @@ const dialogues = ( state = initialState, action )=>{
 export default dialogues;
 
 
+
+export let follow = (userId) => ({type : 'FOLLOW', userId}); 
+export let unfollow = (userId) => ({type : 'UNFOLLOW', userId});
+export let setUsers = (usersData)=>({ type: SET_STATE,  usersData})
+export let pagination = (numberPage) => ( { type: PAGINATI_ON, numberPage} )
+export let PAGINATION__NEXT = (numeric) => ( {type: PAGINATION_NEXT, numeric})
+export let is_Loading = (boolean) => ({ type: LOADING , boolean})
 
 // case ADD_DIALOGUES:
 //     let nuwObj = {
