@@ -1,20 +1,34 @@
 
 
-.header{
-    grid-area: h;
-    
+.wraper{
+    grid-area: h;    
     background: linear-gradient(145deg, #309ebe, #39bce2);
     /* box-shadow:  20px 20px 60px #2d96b3, -20px -20px 60px #3dcaf3; */
     padding: 20px 0;
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    /* grid-template-rows: 300px 1fr 300px; */
+    grid-template-areas: 
+      "l c r";
     }
-    .header .logo{
+ 
+    .wraper .logo{
       width: 200px;
       margin-left: 40px;
+      grid-area: l;
     }
-    .header .logo img{
+    .wraper .logo img{
       align-self: center;
       object-fit: fill;
       width: 150px;
       height: 50px;
     }
-  
+    .wraper .center{
+      grid-area: c;
+    }
+    .wraper .right{
+      grid-area: r;      
+    }
+    .wraper .right .login{
+      cursor: pointer;
+    }

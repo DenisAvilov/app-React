@@ -1,19 +1,19 @@
 import React from 'react';
 import './App.css';
-import Header from './components/header/Header';
+
 import Nav from './components/navbar/Navbar';
 
 import { Route } from 'react-router-dom';
 import ProfileContainer from './components/profile/ProfileContainer';
-import DialoguesContainer from './components/test/DialoguesContainer';
 import UsersContainer from './components/dialogues/UsersContainer';
+import HeaderContainer from './components/header/HeaderContainer';
 
 
 const App = (props) => {
  
   return (
     <div className='app-wrapper'>
-      <Header />
+      <HeaderContainer />
       <Nav />
       <div className="profile">
 
@@ -24,7 +24,7 @@ const App = (props) => {
             <UsersContainer />} 
          />
 
-        <Route path='/profile' render={() =>
+        <Route path='/profile/:userId?' render={() =>
            <ProfileContainer  />} 
         />
       

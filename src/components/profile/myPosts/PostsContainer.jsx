@@ -1,7 +1,25 @@
 import React from 'react';
-import { ADD__POST, CHANGE__STATE } from '../../../redux/profile-reducer';
+import { add_nuw_post, textarea_change_state } from '../../../redux/profile-reducer';
 import Posts from './Posts.jsx';
 import { connect } from 'react-redux';
+
+ 
+class PostsContainer extends React.Component{
+
+
+   render(){
+      return(
+         <Posts 
+         posts={this.props.posts}
+         placeholder={this.props.placeholder}
+         textarea_change_state={this.props.textarea_change_state}
+         add_nuw_post={this.props.add_nuw_post}
+      
+         />
+      )
+   }
+}
+
 
 let mapStateToProps = (state)=>{
  
@@ -11,21 +29,6 @@ let mapStateToProps = (state)=>{
    } 
 }
 
-let mapDispatchToProps = (dispatch) => {
-
-    return {
-            chengePlaceholder: (text) => {
-           
-             dispatch(CHANGE__STATE(text) )
-
-             },
-        addPost: () => { 
-            dispatch( ADD__POST() )
-         }
-    }
-
-}
 
 
-const PostsContainer = connect( mapStateToProps, mapDispatchToProps )(Posts)
-export default PostsContainer;
+export default connect( mapStateToProps, { textarea_change_state, add_nuw_post })(PostsContainer)

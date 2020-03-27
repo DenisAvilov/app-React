@@ -2,19 +2,51 @@ import React from 'react';
 import d from './Profile.module.css';
 import PostsContainer from './myPosts/PostsContainer';
 import { connect } from 'react-redux';
-import { CHANGE__STATE, ADD__POST } from '../../redux/profile-reducer';
+import { textarea_change_state, add_nuw_post, watch_state } from '../../redux/profile-reducer';
 import Profile from './Profile';
+import * as axios from 'axios';
+import { withRouter } from 'react-router-dom';
+
+
+class ProfileContainer extends React.Component{
+
+  componentDidMount(){
+    let user = this.props.match.params.userId;
+  if(!user){
+    user = 2;
+  }
+ 
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + user)
+    .then( (response) => {    
+        this.props.watch_state(response.data) 
+     } )
+  }
+
+  render(){
+  
+    return(
+   
+       < Profile 
+         {...this.props}
+         items={ this.props.items }
+       />
+    )
+  }
+
+
+}
 
 
 let mapStateToProps = (state)=>{ 
+ 
   return {
-    store: state.profile
-    
+    store: state.profile,
+    items: state.profile.items
   }
 }
 
 
-const ProfileContainer = connect( mapStateToProps )( Profile )
+export default connect( mapStateToProps, {textarea_change_state, add_nuw_post, watch_state} )( withRouter( ProfileContainer ) )
  
 // let onChange = () => {   
 //   let text = postEllement.current.value;
@@ -32,4 +64,3 @@ const ProfileContainer = connect( mapStateToProps )( Profile )
   
 
 
-export default ProfileContainer;

@@ -8,11 +8,11 @@ const Posts = (props) => {
     let onChange = () => {      
         let text = postEllement.current.value;
         
-          props.chengePlaceholder(text);
+          props.textarea_change_state(text);
         // props.dispatch( CHANGE__STATE(text) )
     }
     let onAddPost = () => {
-           props.addPost()
+           props.add_nuw_post()
         // props.dispatch( ADD__POST() )
     }
 
