@@ -1,71 +1,28 @@
 import React from 'react';
-<<<<<<< HEAD
-import { follow, unfollow, setUsers, pagination, is_Loading } from '../../redux/dialogues-reducer';
-=======
-import { _FOLLOW, UN_FOLLOW, SET__STATE, PAGINATION } from '../../redux/dialogues-reducer';
->>>>>>> 12b4799c7e914e283071fa6f56256a1fb7530ea8
+
+import { follow, unfollow, setUsers, pagination, is_Loading, is_Loading_Button } from '../../redux/dialogues-reducer';
+
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import Users from './Users';
+import { withRouter } from 'react-router-dom';
+import { usersApi } from '../../api/Api';
+
 
 class UsersContainer extends React.Component {
-<<<<<<< HEAD
-
-    componentDidMount() {     
-        this.props.is_Loading(true)   
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data)    
-                this.props.is_Loading(false)             
-            })
-    }
-
-    onPagination = (pageNumber) => {
-         this.props.is_Loading(true) 
-        this.props.pagination(pageNumber);      
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setUsers(response.data)
-                this.props.is_Loading(false)                 
-            })
-    }
-
-    render() {
-
-        return (<>
-               
-            <Users
-                users={this.props.state.users}
-                unfollow={this.props.unfollow}
-                follow={this.props.follow}
-                pagination={this.props.pagination}
-                totalCount={this.props.state.totalCount}
-                pageSize={this.props.state.pageSize}
-                currentPage={this.props.state.currentPage}
-                isloading={this.props.state.isLoading}
-                onPagination={this.onPagination}
-                is_Loading={this.props.is_Loading}
-            />
-           </> 
-        )
-    }
-}
-
-=======
     
     componentDidMount() {
      
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}`)
-            .then(response => {                            
-                this.props.setUsers(response.data)
-            })  
+        usersApi.getUsers(this.props.pageSize ).then(data => {                                      
+                this.props.setUsers(data)
+            })   
     }
 
-    onPagination = (pageNumber) => {
+    onPagination = (pageNumber) => {        
         this.props.pagination(pageNumber);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {                            
-                this.props.setUsers(response.data)
+        debugger
+        usersApi.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {                            
+                this.props.setUsers(data)
             }) 
       }
   
@@ -73,9 +30,8 @@ class UsersContainer extends React.Component {
   
 
     render() {
-             
-        return (
-      
+            
+        return (      
             <Users 
              users={this.props.state.users}
              unfollow={this.props.unfollow}
@@ -84,12 +40,14 @@ class UsersContainer extends React.Component {
              totalCount={this.props.state.totalCount}
              pageSize={this.props.state.pageSize}
              currentPage={this.props.state.currentPage}
-             onPagination={this.onPagination}            
+             onPagination={this.onPagination}
+             usersApi={usersApi}
+             followButton={this.props.followButton}           
+             is_Loading_Button={this.props.is_Loading_Button}
             />
         )
     }
 }
->>>>>>> 12b4799c7e914e283071fa6f56256a1fb7530ea8
 
 let mapStateToProps = (state) => {
 
@@ -97,7 +55,9 @@ let mapStateToProps = (state) => {
         state: state.dialogues,
         currentPage: state.dialogues.currentPage,
         pageSize: state.dialogues.pageSize,
-        isLoading: state.dialogues.isLoading
+        isLoading: state.dialogues.isLoading,
+        followButton: state.dialogues.followButton,
+       
     }
 }
 
@@ -113,10 +73,8 @@ let mapStateToProps = (state) => {
 
 // }
 
-<<<<<<< HEAD
-export default connect(mapStateToProps, { follow, unfollow, setUsers, pagination, is_Loading })(UsersContainer)
-=======
-export default connect( mapStateToProps, mapDispatchToProps )( UsersContainer )
->>>>>>> 12b4799c7e914e283071fa6f56256a1fb7530ea8
+
+
+export default connect(mapStateToProps, {is_Loading_Button, follow, unfollow, setUsers, pagination, is_Loading })(withRouter(UsersContainer))
 
 
