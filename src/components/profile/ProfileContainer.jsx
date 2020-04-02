@@ -1,66 +1,51 @@
 import React from 'react';
-import d from './Profile.module.css';
-import PostsContainer from './myPosts/PostsContainer';
 import { connect } from 'react-redux';
-import { textarea_change_state, add_nuw_post, watch_state } from '../../redux/profile-reducer';
+import { textarea_change_state, add_nuw_post,  is_watch_state } from '../../redux/profile-reducer';
 import Profile from './Profile';
-import * as axios from 'axios';
-import { withRouter } from 'react-router-dom';
-
+import { withRouter, Redirect, Switch } from 'react-router-dom';
+import { compose } from 'redux';
+import { withAuthMe } from '../hoc/withAuthMe';
 
 class ProfileContainer extends React.Component{
 
   componentDidMount(){
-    let user = this.props.match.params.userId;
-  if(!user){
-    user = 2;
-  }
- 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + user)
-    .then( (response) => {    
-        this.props.watch_state(response.data) 
-     } )
+    let user = this.props.match.params.userId;    
+    if(!user){
+      user = this.props.authMe.id;
+    }
+     this.props.is_watch_state(user) 
   }
 
-  render(){
-  
-    return(
-   
+  render(){    
+        return(   
        < Profile 
          {...this.props}
          items={ this.props.items }
+         authMe={this.props.authMe}
        />
     )
   }
-
-
 }
 
-
-let mapStateToProps = (state)=>{ 
+let mapStateToProps = (state)=>{  
  
   return {
     store: state.profile,
-    items: state.profile.items
+    items: state.profile.items,
+    authMe: state.login
   }
 }
 
+export default compose(
+  withRouter,
+  withAuthMe,
+  connect( mapStateToProps, {textarea_change_state, add_nuw_post, 
+    is_watch_state} )
+)(ProfileContainer)
 
-export default connect( mapStateToProps, {textarea_change_state, add_nuw_post, watch_state} )( withRouter( ProfileContainer ) )
+
+
  
-// let onChange = () => {   
-//   let text = postEllement.current.value;
-//     props.placeholder(text)      
-//   // props.dispatch( CHANGE__STATE(text) )
-// }
-// let onAddPost = () => {
-//      props.addPost()
-//   // props.dispatch( ADD__POST() )
-// }
-   
-
-      // <PostsContainer store={props.profile} posts={props.state.profile} newPostText={props.state.profile.inputState} dispatch={props.dispatch} />
-   
   
 
 

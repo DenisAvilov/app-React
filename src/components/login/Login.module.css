@@ -1,0 +1,29 @@
+.wrap{
+    grid-area: m;
+    padding-top: 50px;
+
+}
+.wrap h1{    
+    text-align: center;
+    font-weight: 900;
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+.wrap form{
+    display: flex;
+    flex-direction: column;
+    max-width:  250px;
+    margin: 0 auto;
+}
+.field {
+    margin-bottom: 20px;
+    display: inline-flex;
+    margin-left: auto;
+    align-items: center;
+
+}
+.field label{   
+ width: 80px;
+ display: inline-block;
+ text-align: center;
+}
