@@ -1,37 +1,17 @@
+import { usersApi } from "../api/Api";
+
  const ADD_POST = 'ADD-POST'; 
  const CHANGE_STATE = 'CHANGE-STATE'; 
  const WATCH_STATE = 'WATCH-STATE';
 
-let initialState = {
-        //    atems: [
-        //     {
-        //         id: 1,
-        //         backgroundImg: "https://cdn.pixabay.com/photo/2016/11/21/15/38/beach-1846009_960_720.jpg",
-        //         backgroundAlt: 'foto',
-        //         name: 'Денис',
-        //         secondName: 'Авилов',
-        //         day: 13,
-        //         month: 0o1,
-        //         year: 1985,
-        //         education: 'ХИРЭ',
-        //         city: 'Харьков',
-        //         site: 'avlovdenis.pp.ua',
-        //         avatar: "https://help-odnoklassniki.ru/wp-content/uploads/2019/01/framed-portrait.png",
-        //         avatarAlt: "фото профиля"
-        //     }
-
-        // ],
+let initialState = {       
         items: [
-             {
-            //    name: "Magus",
-            //    id: 6546,
-            //    uniqueUrlName: null,
+             {            
              photos: {
                small : null,
               large : null
              },
-            //  status : null,
-            //    followed : false
+            
              },
         ],
         match: {
@@ -63,7 +43,7 @@ let initialState = {
                  placeholder : "Напиши еще новость"
                 }; 
             case WATCH_STATE:{
-             
+            
                 return{ ...state,
                     items :  action.info,
 
@@ -79,3 +59,13 @@ export let textarea_change_state  = (text) => ({ type: CHANGE_STATE, text: text 
 export let add_nuw_post = ()=>({ type: ADD_POST }) 
 export let watch_state = (info) => ({type: WATCH_STATE, info})
  export default profile;
+
+export const is_watch_state = (user) => {
+
+    return (distpath) => {  
+        usersApi.getProfile(user)     
+       .then( (response) => {    
+           distpath(watch_state(response.data)) 
+        } )
+    }
+} 
