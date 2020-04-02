@@ -7,7 +7,7 @@ const Avatar = (props) => {
   return (
     <div className={d.avatar}>
     
-  {!props.img || props.img.small === null? <img src="https://www.w3schools.com/howto/img_avatar.png" alt=""/> :
+  {!props.img || props.img.small === null? <img src="https://www.w3schools.com/howto/img_avatar.png" alt="нет фото"/> :
    <img src={props.img.small} alt=""/>}
       <div className={d.user}>
         <ul>

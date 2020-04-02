@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import ProfileContainer from './components/profile/ProfileContainer';
 import UsersContainer from './components/dialogues/UsersContainer';
 import HeaderContainer from './components/header/HeaderContainer';
+import Login from './components/login/Login';
 
 
 const App = (props) => {
@@ -26,6 +27,10 @@ const App = (props) => {
 
         <Route path='/profile/:userId?' render={() =>
            <ProfileContainer  />} 
+        />
+
+        <Route path='/login' render={() =>
+           <Login />} 
         />
       
         

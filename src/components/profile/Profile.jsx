@@ -4,7 +4,7 @@ import Avatar from './myPosts/avatar/avatar';
 import PostsContainer from './myPosts/PostsContainer';
 
 const Profile = (props) => {
-  
+ 
 let mySite = !props.items.contacts? 'НЕТ САЙТА' : props.items.contacts;
 
   return (
