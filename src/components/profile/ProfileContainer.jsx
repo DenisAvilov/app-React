@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { textarea_change_state, add_nuw_post,  is_watch_state } from '../../redux/profile-reducer';
+import { textarea_change_state, add_nuw_post,  is_watch_state, getUserStatus, upStatus,  } from '../../redux/profile-reducer';
 import Profile from './Profile';
 import { withRouter, Redirect, Switch } from 'react-router-dom';
 import { compose } from 'redux';
@@ -12,8 +12,12 @@ class ProfileContainer extends React.Component{
     let user = this.props.match.params.userId;    
     if(!user){
       user = this.props.authMe.id;
+     // user = 2;
     }
-     this.props.is_watch_state(user) 
+     this.props.getUserStatus(user);
+     this.props.is_watch_state(user); 
+     
+
   }
 
   render(){    
@@ -22,6 +26,9 @@ class ProfileContainer extends React.Component{
          {...this.props}
          items={ this.props.items }
          authMe={this.props.authMe}
+
+         status = {this.props.status}
+         upStatus = {this.props.upStatus}
        />
     )
   }
@@ -32,16 +39,21 @@ let mapStateToProps = (state)=>{
   return {
     store: state.profile,
     items: state.profile.items,
-    authMe: state.login
+    authMe: state.login,
+    status: state.profile.status
+
   }
 }
 
 export default compose(
   withRouter,
-  withAuthMe,
+  // withAuthMe,
   connect( mapStateToProps, {textarea_change_state, add_nuw_post, 
-    is_watch_state} )
+    is_watch_state, getUserStatus, upStatus} )
 )(ProfileContainer)
+
+
+
 
 
 
