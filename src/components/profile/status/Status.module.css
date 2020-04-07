@@ -1,0 +1,7 @@
+.wrap{
+    padding-left: 10px;
+}
+.wrap span{
+    height: 25px;
+    display: inline-block;
+}
