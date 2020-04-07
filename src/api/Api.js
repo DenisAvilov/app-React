@@ -27,7 +27,8 @@ const instance = axios.create({
       })  
    },
    getProfile : (user) => {
-     return instance.get( `profile/` + user) 
+      console.warn('Obsolete method. Please profileApi object.');  
+      return profileApi.getProfile(user)
      }, 
     getUsers :  ( count = 1, page = 10, ) => {        
         return  instance.get(  `users?count=${page}&page=${count}`).then(
@@ -48,7 +49,7 @@ const instance = axios.create({
         return  instance.post(  `follow/${userId}`,{},)
           .then(
             (response) => {
-                 debugger
+                 
                    return response.data.resultCode
          })
           
@@ -57,4 +58,16 @@ const instance = axios.create({
  }
 
 
- 
+ export const profileApi =  { 
+     upDateStatus : (status) => {
+          //Не забывем о том, что сервер индифицирует нас автомотически через куки указанные в withCredentials: true
+          //Поэтому передаем в запросе только объект с информацией 
+          debugger
+          return instance.put( `profile/status/`, { status : status } ) 
+            }, 
+     getStatus : (userId) => {          
+          return instance.get( `profile/status/` + userId )       }, 
+     getProfile : (user) => {
+          return instance.get( `profile/` + user) 
+          }, 
+ }
