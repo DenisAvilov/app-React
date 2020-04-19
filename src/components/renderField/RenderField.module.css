@@ -1,0 +1,25 @@
+
+.formValid.styleError textarea, 
+.formValid.styleError input {
+    border: 2px solid red
+}
+
+ 
+.formValid.styleError span{    
+     color: red;
+     display: block;
+     width: 100%;
+     
+} 
+.formValid {
+    margin-bottom: 20px;
+    display: inline-flex;
+    margin-left: auto;
+    align-items: center;
+
+}
+.formValid label{   
+ width: 80px;
+ display: inline-block;
+ text-align: center;
+}
