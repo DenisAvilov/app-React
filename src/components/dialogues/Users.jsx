@@ -34,7 +34,7 @@ const Users = (props) => {
           {props.users.map(user =>
 
             <div className={d.dialog}>
-              <NavLink to={path + user.id} activeClassName={d.active}>
+              <NavLink to={path + user.id} key={user.id} activeClassName={d.active}>
                 {user.photos.small === null ?
                   <div className={d.img_logo_wrap}>
                     <img className={d.img_logo} src="https://i.pinimg.com/originals/3d/6d/53/3d6d53f5a27089f411588dd57b8d8a87.png" alt="" />

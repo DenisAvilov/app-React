@@ -1,38 +1,49 @@
 import React from 'react';
 import d from './Posts.module.css';
 import Post from './post/Post.jsx'
-const Posts = (props) => {
+import { Field }   from 'redux-form';
+import { reduxForm }   from 'redux-form';
+import { Textarea } from '../../renderField/RenderField';
+import { maxLength, requer, } from '../../../validation/FieldLevelValidationForm';
 
-    let postEllement = React.createRef();
 
-    let onChange = () => {      
-        let text = postEllement.current.value;
-        
-          props.textarea_change_state(text);
-        // props.dispatch( CHANGE__STATE(text) )
-    }
-    let onAddPost = () => {
-           props.add_nuw_post()
-        // props.dispatch( ADD__POST() )
-    }
+
+const Posts = (props) => {  
 
     const postItem = props.posts.map(content => (<Post key={content.id} id={content.id}
          massedge={content.massedge} like={content.like} img={content.img} />));
+     
+       let submit = values => {           
+            console.log(values)
+            props.add_nuw_post(values.newPost)            
+          }   
 
     return (
         <div className={d.posts}>
             <h2>Ваши посты</h2>
-            <div>
-                <input type="textarea" ref={postEllement}
-                    onChange={onChange} value={props.placeholder}
-                />
-                <button onClick={onAddPost}>Отправить</button>
-                <button >Удалить</button>
-            </div>
+           <PostFieldFormRedux onSubmit={submit}/> 
              {postItem} 
         </div>
     )
 
 }
+
+let maxLength20 = maxLength(20);
+
+let PostFieldForm = (props) => {  
+    let {handleSubmit} = props
+    return(
+        <form onSubmit={ handleSubmit }>
+                <Field component={Textarea} name="newPost"
+                 type="text" label="Введите новый пост" 
+                 validate={[maxLength20]}
+               />
+                <button type="submit" >Отправить</button>                
+        </form>
+    )
+}
+
+let PostFieldFormRedux = reduxForm({ form: "newPost" })( PostFieldForm )
+
 
 export default Posts;

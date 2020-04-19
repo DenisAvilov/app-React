@@ -3,14 +3,17 @@ import profile from "./profile-reducer";
 import dialogues from "./dialogues-reducer";
 import login from "./login";
 import thunk from "redux-thunk";
-
+import trainer from "./trainer";
+import { reducer as formReducer } from 'redux-form'
 
 // Функция обединение редьюсеров 
 
 let reducers = combineReducers({
     profile : profile,
     dialogues : dialogues,
-    login: login
+    login: login,
+    trainer: trainer,
+    form : formReducer 
 }); 
 
 //thunk прослойка позволяющая распозновать объекты от функций

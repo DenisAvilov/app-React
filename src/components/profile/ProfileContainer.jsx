@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { textarea_change_state, add_nuw_post,  is_watch_state, getUserStatus, upStatus,  } from '../../redux/profile-reducer';
+import {  add_nuw_post,  is_watch_state, getUserStatus, upStatus,  } from '../../redux/profile-reducer';
 import Profile from './Profile';
-import { withRouter, Redirect, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { withAuthMe } from '../hoc/withAuthMe';
 
@@ -47,8 +47,8 @@ let mapStateToProps = (state)=>{
 
 export default compose(
   withRouter,
-  // withAuthMe,
-  connect( mapStateToProps, {textarea_change_state, add_nuw_post, 
+  withAuthMe,
+  connect( mapStateToProps, { add_nuw_post, 
     is_watch_state, getUserStatus, upStatus} )
 )(ProfileContainer)
 

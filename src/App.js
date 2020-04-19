@@ -7,7 +7,8 @@ import { Route } from 'react-router-dom';
 import ProfileContainer from './components/profile/ProfileContainer';
 import UsersContainer from './components/dialogues/UsersContainer';
 import HeaderContainer from './components/header/HeaderContainer';
-import Login from './components/login/Login';
+import TrainerContainer from './components/trainer/TrainerContainer';
+import LoginContainer from './components/login/LoginContainer';
 
 
 const App = (props) => {
@@ -30,10 +31,12 @@ const App = (props) => {
         />
 
         <Route path='/login' render={() =>
-           <Login />} 
+           <LoginContainer />} 
         />
-      
-        
+        <Route path='/train' render={() =>
+            <TrainerContainer />} 
+          />
+          
  
       </div>
     </div>
