@@ -1,5 +1,6 @@
 import React from 'react';
 import d from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,9 +13,10 @@ const Header = (props)=>{
           <div className={d.center}></div>
           <div className={d.right}>
               <div className={d.login}>
-                 {props.isYou ? <p>{props.login}</p> : <p>LOGIN</p> } 
+                 {props.isYou ? <h1>{props.login}</h1> : <Link to={'/login'}><h2>LOGIN</h2></Link>  }
+                 {props.isYou ? <div onClick={  props.iSoutLogin }> Выйти</div>  : " "} 
               </div>
-          </div>
+          </div> 
         </header>
     )
 }

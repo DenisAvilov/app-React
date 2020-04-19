@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
-import { is_login, login_success } from '../../redux/login';
+import { is_login, login_success, iSoutLogin } from '../../redux/login';
 import { compose } from 'redux';
 
 
@@ -29,6 +29,8 @@ class HeaderContainer extends React.Component{
              {...this.props}
              login={this.props.login}
              isYou={ this.props.isYou}
+
+             iSoutLogin={ this.props.iSoutLogin}
             />
         )
     }
@@ -44,7 +46,7 @@ return{
 }
 
 export default compose(
-    connect( mapStateToProps, {is_login, login_success }  )
+    connect( mapStateToProps, {is_login, login_success, iSoutLogin }  )
 )(HeaderContainer)
 
  

@@ -22,9 +22,8 @@ const instance = axios.create({
  //6281
    
    getAuthMe : () => {
-   return   instance.get(`auth/me`,{}, ).then( (response) => {
-         return response
-      })  
+        console.warn("Obsolete method. Please authApi object.");
+   return   authApi.getAuthMe()   
    },
    getProfile : (user) => {
       console.warn('Obsolete method. Please profileApi object.');  
@@ -71,3 +70,20 @@ const instance = axios.create({
           return instance.get( `profile/` + user) 
           }, 
  }
+ export const authApi =  {
+     //6281
+       
+       getAuthMe : () => {
+       return   instance.get(`auth/me`, )
+       },
+       loginPost : (mail, password, rememberMe ) => {
+                      return instance.post(  `auth/login/`,  {email : mail, password : password, rememberMe : rememberMe})
+       },
+       loginOut : () => {
+          return instance.delete(  `auth/login/`,  { }).then(
+              
+          )  
+}
+
+
+     }
