@@ -2,9 +2,9 @@ import React from 'react'
 import d from './Login.module.css'
 import { Field, reduxForm } from 'redux-form'
 
-import { Input } from '../renderField/RenderField'
+import { SomeField } from '../renderField/RenderField'
 import { email, requer, password2   } from '../../validation/FieldLevelValidationForm'
-
+let Input = SomeField("Input");
 
 let Login = props => {
    const {handleSubmit} = props; 

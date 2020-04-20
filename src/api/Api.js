@@ -61,7 +61,7 @@ const instance = axios.create({
      upDateStatus : (status) => {
           //Не забывем о том, что сервер индифицирует нас автомотически через куки указанные в withCredentials: true
           //Поэтому передаем в запросе только объект с информацией 
-          debugger
+         
           return instance.put( `profile/status/`, { status : status } ) 
             }, 
      getStatus : (userId) => {          

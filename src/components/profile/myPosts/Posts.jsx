@@ -3,9 +3,10 @@ import d from './Posts.module.css';
 import Post from './post/Post.jsx'
 import { Field }   from 'redux-form';
 import { reduxForm }   from 'redux-form';
-import { Textarea } from '../../renderField/RenderField';
-import { maxLength, requer, } from '../../../validation/FieldLevelValidationForm';
+import { SomeField } from '../../renderField/RenderField';
+import { maxLength } from '../../../validation/FieldLevelValidationForm';
 
+const Textarea =  SomeField("Textarea");
 
 
 const Posts = (props) => {  

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { upStatus } from '../../../redux/profile-reducer';
 import StatusForm from './Status';
 
+
 class StatusContainer extends React.Component {
    
         state = {

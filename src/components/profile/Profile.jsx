@@ -2,7 +2,7 @@ import React from 'react';
 import d from './Profile.module.css';
 import Avatar from './myPosts/avatar/avatar';
 import PostsContainer from './myPosts/PostsContainer';
-import Status from './status/Status';
+import StatusContainer from './status/StatusContainer';
 
 
 const Profile = (props) => {
@@ -21,7 +21,7 @@ let mySite = !props.items.contacts? 'НЕТ САЙТА' : props.items.contacts;
        img={props.items.photos}
        mySite={mySite}
        />
-       <Status 
+       <StatusContainer 
        status={props.status}
        upStatus = {props.upStatus}
               />

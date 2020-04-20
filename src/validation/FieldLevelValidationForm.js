@@ -15,9 +15,11 @@ export const requer = (value) => {
 }
 
  export const maxLength = max => value => {
-   return value &&  value.length < max ? undefined : ` Максимальное коллическтво ${max} символов ` 
+   return value &&  value.length < max ? undefined : ` Максимальное коллическтво ${max} символов ` ;
 }
-
+ const minLength = min => value => {
+    return value &&  value.length > min ? undefined : ` Минимальное коллическтво ${min} символов ` ;}
+export const minLength5 = minLength(5);
 
 export const email = value => {
  return  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
