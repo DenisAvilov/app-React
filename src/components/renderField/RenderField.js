@@ -41,6 +41,25 @@ export const Textarea = ({
     </div>
   )}
 
+
+  export const StatusInput = ({
+    input,    
+    type,
+    meta: { touched, error }
+  }) => {
+    let  myError = touched && error;
+    
+    return(    
+    <div className={d.formValid + " " +  (myError ? d.styleError : " ")}>      
+      <div>
+        <input {...input}  type={type} />
+      </div>
+      <div>
+        { myError && <span >{error}</span>}
+      </div>
+    </div>
+  )}
+   
   
   // {touched &&
   //   ((error && <span>{error}</span>) ||
