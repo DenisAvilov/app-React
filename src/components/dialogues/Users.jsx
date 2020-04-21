@@ -1,7 +1,7 @@
 import React from 'react';
 import d from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import preloader from './../../imgs/preloader.gif';
+import Preloader from '../function/preloader/PreloaderContainer';
 
 
 const Users = (props) => {
@@ -17,9 +17,8 @@ const Users = (props) => {
   }
 
   return (
-    <div>
-
-      {props.isloading && <img src={preloader} alt="" />}
+   <div>
+     <Preloader />   
       <div>
         <span>Prev</span>
         {pagination.map(el =>

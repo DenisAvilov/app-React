@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { setUsers, pagination, is_Loading, is_follow_nuw_user, un_is_follow_nuw_user, is_on_pagination } from '../../redux/dialogues-reducer';
+import { setUsers, pagination, is_follow_nuw_user, un_is_follow_nuw_user, is_on_pagination } from '../../redux/dialogues-reducer';
 
 import { connect } from 'react-redux';
 import Users from './Users';
@@ -29,6 +29,7 @@ class UsersContainer extends React.Component {
                 currentPage={this.props.state.currentPage}
                 followButton={this.props.followButton}
 
+                loading={this.props.isLoading}
                 is_follow_nuw_user={this.props.is_follow_nuw_user}
                 un_is_follow_nuw_user={this.props.un_is_follow_nuw_user}
                 is_on_pagination={this.props.is_on_pagination}
@@ -53,7 +54,7 @@ export default compose(
     withRouter,
     connect(mapStateToProps,
         {
-            setUsers, pagination, is_Loading,
+            setUsers, pagination,
             is_follow_nuw_user, un_is_follow_nuw_user, is_on_pagination
         })
 )(UsersContainer)

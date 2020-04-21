@@ -17,7 +17,7 @@ let initialState = {
     totalCount: 19,
     pageSize: 5,
     currentPage: 1,
-    isLoading: true,
+    isLoading: false,
     followButton: []
 }
 const dialogues = (state = initialState, action) => {
@@ -124,13 +124,16 @@ export const un_is_follow_nuw_user = (user) => {
 
 }
 export const is_on_pagination = (pageNumber, pageSize) => {
-    return (distpach) => {
-        distpach(pagination(pageNumber));
-
-        usersApi.getUsers(pageNumber, pageSize)
+    return (distpach) => {  
+        distpach(is_Loading(true)) ;           
+        distpach(pagination(pageNumber));   
+         
+        usersApi.getUsers(pageNumber, pageSize)       
             .then(data => {
                 distpach(setUsers(data))
+                distpach(is_Loading(false))
             })
+            
     }
 
 }
