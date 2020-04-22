@@ -5,7 +5,7 @@ import login from "./login";
 import thunk from "redux-thunk";
 import trainer from "./trainer";
 import { reducer as formReducer } from 'redux-form'
-
+import initialize_app from './app-reducer'
 // Функция обединение редьюсеров 
 
 let reducers = combineReducers({
@@ -13,6 +13,7 @@ let reducers = combineReducers({
     dialogues : dialogues,
     login: login,
     trainer: trainer,
+    initialize: initialize_app,
     form : formReducer 
 }); 
 
