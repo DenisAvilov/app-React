@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { setUsers, pagination, is_follow_nuw_user, un_is_follow_nuw_user, is_on_pagination } from '../../redux/dialogues-reducer';
 
 import { connect } from 'react-redux';
@@ -7,6 +6,7 @@ import Users from './Users';
 import { withRouter } from 'react-router-dom';
 import { usersApi } from '../../api/Api';
 import { compose } from 'redux';
+import  { withAuthMe } from './../hoc/withAuthMe';
 
 class UsersContainer extends React.Component {
 
@@ -46,11 +46,12 @@ let mapStateToProps = (state) => {
         pageSize: state.dialogues.pageSize,
         isLoading: state.dialogues.isLoading,
         followButton: state.dialogues.followButton,
-
+       
     }
 }
 
 export default compose(
+    withAuthMe,
     withRouter,
     connect(mapStateToProps,
         {

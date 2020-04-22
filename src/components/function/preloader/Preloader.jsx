@@ -1,10 +1,10 @@
 import React from "react"
 import preloader from "./../../../imgs/preloader.gif"
 import "./Preloader.css"; 
-const Preloader = (props) => {
+const Preloader = () => {
     return(
         <div className="wrap_preloader">
-             {props.preloader &&  <img src={preloader} />} 
+             <img src={preloader} />
       </div>
     )
 }

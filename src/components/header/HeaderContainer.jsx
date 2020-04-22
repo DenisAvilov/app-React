@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
-import { is_login, login_success, iSoutLogin } from '../../redux/login';
+import { is_login, iSoutLogin } from '../../redux/login';
 import { compose } from 'redux';
 
 
@@ -9,17 +9,6 @@ import { compose } from 'redux';
 
 class HeaderContainer extends React.Component{
 
-   componentDidMount(){
-    this.props.login_success()
-
-    // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
-    //      withCredentials: true } ).then( (response) => {
-    //          if(response.data.resultCode === 0){           
-    //              this.props.is_login(response.data.data.id, 
-    //                 response.data.data.login, response.data.data.email)
-    //          }  
-    //      })
-   }
 
 
     render(){
@@ -46,7 +35,7 @@ return{
 }
 
 export default compose(
-    connect( mapStateToProps, {is_login, login_success, iSoutLogin }  )
+    connect( mapStateToProps, {is_login,  iSoutLogin }  )
 )(HeaderContainer)
 
  
