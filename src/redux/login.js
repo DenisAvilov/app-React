@@ -72,15 +72,17 @@ export const is_login_in = (email, password, rememberMe = false) => (distpath) =
 
 
 export const login_success = () => {
-    return (distpath) => {       
-       usersApi.getAuthMe().then( (response) => {
-        if(response.data.resultCode === 0){           
+    return (distpath) => { 
+      //диспатч может вернуть то что нам нужно  
+      return usersApi.getAuthMe().then( (response) => {
+         if(response.data.resultCode === 0){           
             distpath( is_login(response.data.data.id, 
-               response.data.data.login, response.data.data.email, true))
-        } 
-        } 
+              response.data.data.login, response.data.data.email, true))
+         } 
+         } 
         
        )
+    
     }
 }     
 

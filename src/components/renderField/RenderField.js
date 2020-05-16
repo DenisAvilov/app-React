@@ -2,16 +2,16 @@ import React from "react"
 import d from './RenderField.module.css'
 //redux-form.com
 
-export const SomeField = TypeField => ({input,
+export const Element = Tag => ({input,
   label,
   type,
-  meta: { touched, error, warning }}) => {
+  meta: { touched, error }}) => {
     let  myError = touched && error;
   return(    
   <div className={d.formValid + " " +  (myError ? d.styleError : " ")}>      
     <label>{label}</label>
     <div>
-      < TypeField {...input} placeholder={label} type={type} />
+      < Tag {...input} placeholder={label} type={type} />
     </div>
     <div>
       { myError && <span >{error}</span>}

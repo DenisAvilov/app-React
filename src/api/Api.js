@@ -2,6 +2,16 @@ import * as  axios from "axios"
 
 // let baseUrl = `https://social-network.samuraijs.com/api/1.0/`;
 
+// axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
+//      withCredentials: true } ).then( (response) => {
+//          if(response.data.resultCode === 0){           
+//              this.props.is_login(response.data.data.id, 
+//                 response.data.data.login, response.data.data.email)
+//          }  
+//      })
+
+ 
+
 const instance = axios.create({
     withCredentials: true,
     baseURL : `https://social-network.samuraijs.com/api/1.0/`,

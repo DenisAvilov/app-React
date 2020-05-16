@@ -3,10 +3,10 @@ import d from './Posts.module.css';
 import Post from './post/Post.jsx'
 import { Field }   from 'redux-form';
 import { reduxForm }   from 'redux-form';
-import { SomeField } from '../../renderField/RenderField';
+import { Element } from '../../renderField/RenderField';
 import { maxLength } from '../../../validation/FieldLevelValidationForm';
 
-const Textarea =  SomeField("Textarea");
+const Textarea =  Element("textarea");
 
 
 const Posts = (props) => {  
@@ -37,7 +37,7 @@ let PostFieldForm = (props) => {
         <form onSubmit={ handleSubmit }>
                 <Field component={Textarea} name="newPost"
                  type="text" label="Введите новый пост" 
-                 validate={[maxLength20]}
+                 
                />
                 <button type="submit" >Отправить</button>                
         </form>

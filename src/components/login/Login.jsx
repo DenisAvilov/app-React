@@ -2,15 +2,13 @@ import React from 'react'
 import d from './Login.module.css'
 import { Field, reduxForm } from 'redux-form'
 
-import { SomeField } from '../renderField/RenderField'
+import { Element } from '../renderField/RenderField'
 import { email, requer, password2   } from '../../validation/FieldLevelValidationForm'
-let Input = SomeField("Input");
+let Input = Element("input");
 
-let Login = props => {
-   const {handleSubmit} = props; 
-
-    return (
-        <form onSubmit={handleSubmit}>
+let Login = ({handleSubmit, error}) => { 
+   return (
+        <form onSubmit={handleSubmit}> 
             <div className={d.field}>             
                 <Field name="mail" label="Почта" component={Input} type="email"  validate={[email, requer]} />
             </div>
@@ -21,7 +19,7 @@ let Login = props => {
                 <Field name="checkbox" component={Input} type="checkbox" label="Запомнить меня"/>
             </div>   
             <div>
-             {props.error}
+             {error}
             </div>        
             <div className={d.field}>               
                 <button type="submit"> Войти </button>              
