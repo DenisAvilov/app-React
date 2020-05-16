@@ -1,15 +1,14 @@
 import { usersApi } from "../api/Api";
+import { usersFollow } from "../untils/object-helpers";
 
-//ActionCreator
 
-
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_STATE = 'SET-STATE';
-const PAGINATI_ON = 'PAGINATION';
-const PAGINATION_NEXT = 'PAGINATION-NEXT';
-const LOADING = 'LOADING';
-const LOADING_STATE_BUTTON = 'LOADING-STATE-BUTTON';
+const FOLLOW = 'FIRST-APP/APP-REDUCER/FOLLOW';
+const UNFOLLOW = 'FIRST-APP/APP-REDUCER/UNFOLLOW';
+const SET_STATE = 'FIRST-APP/APP-REDUCER/SET-STATE';
+const PAGINATI_ON = 'FIRST-APP/APP-REDUCER/PAGINATION';
+const PAGINATION_NEXT = 'FIRST-APP/APP-REDUCER/PAGINATION-NEXT';
+const LOADING = 'FIRST-APP/APP-REDUCER/LOADING';
+const LOADING_STATE_BUTTON = 'FIRST-APP/APP-REDUCER/LOADING-STATE-BUTTON';
 
 let initialState = {
     users: [
@@ -18,13 +17,10 @@ let initialState = {
     pageSize: 5,
     currentPage: 1,
     isLoading: false,
-    followButton: [],
-    fake: 1
+    followButton: []
 }
 const dialogues = (state = initialState, action) => {
-
     switch (action.type) {
-        // case "FAKE": return{  ...state, fake : state.fake  + 1 }
         case PAGINATI_ON: {
             return {
                 ...state,
@@ -34,28 +30,16 @@ const dialogues = (state = initialState, action) => {
         case FOLLOW: {
             return {
                 ...state,
-                users: state.users.map(el => {
-                    if (el.id === action.userId) {
-                        return { ...el, followed: true }
-                    }
-                    return el;
-                })
+                users: usersFollow(state.users, action.userId, "id", { followed: true })
             }
         };
         case UNFOLLOW: {
             return {
                 ...state,
-                users: state.users.map(el => {
-                    if (el.id === action.userId) {
-                        return { ...el, followed: false }
-                    }
-                    return el;
-                })
+                users: usersFollow(state.users, action.userId, "id", { followed: false })
             }
         };
-
         case SET_STATE: {
-
             return {
                 ...state,
                 users: action.usersData.items,
@@ -63,14 +47,12 @@ const dialogues = (state = initialState, action) => {
             }
         };
         case LOADING: {
-
             return {
                 ...state,
                 isLoading: action.boolean
             }
         }
         case LOADING_STATE_BUTTON: {
-
             return {
                 ...state,
                 // указываю что в стайте мне нужен масив followButton, перезаписываю в него новое значение
@@ -99,44 +81,32 @@ export const is_Loading_Button = (isLoading, userId) => ({ type: LOADING_STATE_B
 
 
 export const is_follow_nuw_user = (user) => {
-    return (distpach) => {
+    return async (distpach) => {
         distpach(is_Loading_Button(true, user))
-
-        usersApi.postUsers(user)
-            .then((resultCode) => {
-                if (resultCode == 0) {
-                    distpach(follow(user))
-                }
-                distpach(is_Loading_Button(false, user))
-            });
+        let resultCode = await usersApi.postUsers(user)
+        if (resultCode == 0) { distpach(follow(user)) }
+        distpach(is_Loading_Button(false, user))
     }
 
 }
 export const un_is_follow_nuw_user = (user) => {
-    return (distpach) => {
+    return async (distpach) => {
         distpach(is_Loading_Button(true, user))
-
-        usersApi.deleteUsers(user)
-            .then((resultCode) => {
-                if (resultCode == 0) {
-                    distpach(unfollow(user))
-                }
-                distpach(is_Loading_Button(false, user))
-            });
+        let resultCode = await usersApi.deleteUsers(user)
+        if (resultCode == 0) { distpach(unfollow(user)) }
+        distpach(is_Loading_Button(false, user))
     }
 
 }
 export const is_on_pagination = (pageNumber, pageSize) => {
-    return (distpach) => {  
-        distpach(is_Loading(true)) ;           
-        distpach(pagination(pageNumber));   
-         
-        usersApi.getUsers(pageNumber, pageSize)       
-            .then(data => {
-                distpach(setUsers(data))
-                distpach(is_Loading(false))
-            })
-            
+    return async (distpach) => {
+        distpach(is_Loading(true));
+        distpach(pagination(pageNumber));
+
+        let data = await usersApi.getUsers(pageNumber, pageSize)
+        distpach(setUsers(data))
+        distpach(is_Loading(false))
+
     }
 
 }

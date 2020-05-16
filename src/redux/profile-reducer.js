@@ -74,10 +74,10 @@ const profile = (state = initialState, action) => {
     }
 }
 // Action Creator - Distpath Action in  State
-export let add_nuw_post = (massedge) => ({ type: ADD_POST, massedge })
-export let watch_state = (info) => ({ type: WATCH_STATE, info })
-export let setUserStatus = (status) => ({ type: SET_STATUS, status })
-export let postDelete = (postID) =>({type: POST_DELETE, postID }) 
+export const add_nuw_post = (massedge) => ({ type: ADD_POST, massedge })
+export const watch_state = (info) => ({ type: WATCH_STATE, info })
+export const setUserStatus = (status) => ({ type: SET_STATUS, status })
+export const postDelete = (postID) =>({type: POST_DELETE, postID }) 
 
 export default profile;
 //san-creator

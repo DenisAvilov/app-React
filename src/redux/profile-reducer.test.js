@@ -7,8 +7,24 @@ let state = {
         img: "https://www.w3schools.com/howto/img_avatar.png", alt: "user name" },
         { id: 2, massedge: 'Денис привет это первое сообщение', like: '22', 
         img: "https://www.w3schools.com/howto/img_avatar.png", alt: "user name" },
-    ]   
+    ],
+    status: 'local state'   
 } 
+
+
+test('Watch_state complite', () => {
+  // test data   
+    let action = watch_state("Testing status") 
+    // action
+
+  let userStatus = profile(state, action)
+    // exspactation  
+   expect(userStatus.status).toBe("Testing status")
+
+  });
+
+
+
 
 //   test('Post add complite', () => {
 // //  // test data 
@@ -21,26 +37,25 @@ let state = {
 //   });
 
 
- test('Post was delete complite', () => {
-    // test data   
-      let action = postDelete(2) 
-      // action
-   let delProfilePost = profile(state, action)
-     // exspactation  
-       expect(delProfilePost.posts.length).toBe(0)
+//  test('Post was delete complite', () => {
+//     // test data   
+//       let action = postDelete(2) 
+//       // action
+//    let delProfilePost = profile(state, action)
+//      // exspactation  
+//        expect(delProfilePost.posts.length).toBe(null)
 
-    });
-    test('Post not was delete', () => {
-        // test data   
-          let action = postDelete(22222) 
-          // action
-       let delProfilePost = profile(state, action)
-         // exspactation  
-           expect(delProfilePost.posts.length).toBe(2)
+//     });
+    // test('Post not was delete', () => {
+    //     // test data   
+    //       let action = postDelete(22222) 
+    //       // action
+    //    let delProfilePost = profile(state, action)
+    //      // exspactation  
+    //        expect(delProfilePost.posts.length).toBe(2)
     
-        });
-
-
+    //     });
+  
   
 
 
